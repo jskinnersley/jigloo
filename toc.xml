@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+
+<toc label="Jigloo GUI Builder Guide"  topic="html/getting_started.html">
+	<topic label="Introduction" href="html/intro.html" />
+	<topic label="Swing Tutorial" href="html/swing_tutorial/index.html" />
+	<topic label="SWT Tutorial" href="html/swt_tutorial/index.html" />
+	<topic label="Swing App Framework Tutorial" href="html/app_tutorial/index.html" />
+	<topic label="Getting started">
+		<link toc="toc_starting.xml"/> 
+	</topic>
+	<topic label="Building the GUI and Java code">
+		<link toc="toc_building.xml"/> 
+	</topic>
+	<topic label="Inheritance and Other topics">
+		<link toc="toc_other.xml"/> 
+	</topic>
+	<topic label="Tips and FAQs" href="html/tips.html" />
+	<topic label="What's new in 4.0" href="html/changes40/index.html" />
+	<topic label="What's new in 3.9.0" href="html/changes390.html" />
+	<topic label="What's new in 3.8.2" href="html/changes382.html" />
+	<topic label="What's new in 3.8.1" href="html/changes381.html" />
+	<topic label="What's new in 3.8" href="html/changes38.html" />
+	<topic label="What's new in 3.5" href="html/changes35.html" />
+	<topic label="What's new in 3.1" href="html/changes31.html" />
+</toc>

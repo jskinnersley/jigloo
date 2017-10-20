@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+
+<toc label="Building the GUI">
+	<topic label="Basic Editing" href="html/editing.html">
+		<topic label="Adding Components" href="html/editing.html#add_comp"/>
+		<topic label="Adding Custom Components and Layouts" 
+			href="html/editing.html#add_custom"/>
+		<topic label="Selecting components" 
+			href="html/editing.html#selecting"/>
+		<topic label="Setting/Resetting Properties" 
+			href="html/editing.html#setting_props"/>
+		<topic label="Changing the ordering of components" 
+			href="html/editing.html#ordering"/>
+		<topic label="Transferring components to different containers" 
+			href="html/editing.html#transferring"/>
+		<topic label="Renaming Components" href="html/editing.html#renaming"/>
+	</topic>
+	<topic label="Menus, Layouts, Images and Events" href="html/menus_etc.html">
+		<topic label="Creating Menus" href="html/menus_etc.html#menus"/>
+		<topic label="Changing Layouts" href="html/layouts.html"/>
+		<topic label="GridBag Layout" 
+			href="html/layouts.html#gridbag_layout"/>
+		<topic label="JGoodies FormLayout" 
+			href="html/layouts.html#jgform_layout"/>
+		<topic label="SWT Form and Anchor Layouts (Delphi Style)" 
+			href="html/layouts.html#form_anchor_layout"/>
+		<topic label="Setting layout parameters" 
+			href="html/layouts.html#layout_data"/>
+		<topic label="Images and Icons" href="html/menus_etc.html#images"/>
+		<topic label="Event Handlers" href="html/menus_etc.html#events"/>
+	</topic>
+	<topic label="Styles, Look and Feel, and Other topics" href="html/styles_etc.html">
+		<topic label="Setting SWT Styles" href="html/styles_etc.html#styles"/>
+		<topic label="Setting Swing Look and Feel" 
+			href="html/styles_etc.html#laf"/>
+		<topic label="Button Groups" href="html/styles_etc.html#button_groups"/>
+		<topic label="NonVisual and Extra Components" 
+			href="html/styles_etc.html#extra_comps"/>
+		<topic label="Tab names" href="html/styles_etc.html#tab_names"/>
+	</topic>
+	<topic label="Parsing, editing and formatting the Java code" href="html/code.html">
+		<topic label="Parsing the Java code" 
+			href="html/code.html#parsing"/>
+		<topic label="Hiding code from Jigloo" 
+			href="html/code.html#hiding"/>
+		<topic label="Protecting code from Jigloo" 
+			href="html/code.html#protecting"/>
+		<topic label="Class Instantiation" 
+			href="html/code.html#class_creation"/>
+		<topic label="Code Generation and formatting" 
+			href="html/code.html#code_gen"/>
+		<topic label="Externalizing Strings" 
+			href="html/code.html#ext_strings"/>
+	</topic>
+</toc>

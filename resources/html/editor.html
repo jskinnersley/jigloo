@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><title>Form/Source Editor</title></head><body bgcolor=white><small><font face="Helvetica, Arial, sans-serif"><big><b>Jigloo Form/Source editor<br>
+<br>
+</b></big>This part of Jigloo comprises
+the form editor (where you see the GUI being built), and the source editor for the java class.<br>
+<br>
+In the screenshot below, the Form/Source editor occupies the top part
+of the Eclipse window (the editor has been maximized by double-clicking
+on the editor's tab. You can still use Jigloo in the non-maximized
+format, but maximizing hides all the views which are not essential for
+editing a GUI class.<br>
+The form editor is on the left, and the source editor on the right. The
+horizontal split of the Form and Source editors is controlled by a
+setting in the <a href="preferences_page.html">Jigloo Preferences Page</a>.<br>
+<br>
+To ease navigation between the GUI form and the Java source, Jigloo does the following:<br>
+</font></small>
+<ul>
+  <li><small><font face="Helvetica, Arial, sans-serif">If a component
+is selected in the Form editor, the source editor scrolls and
+highlights the most relevant part of the source code</font></small></li>
+  <li><small><font face="Helvetica, Arial, sans-serif">If the cursor is
+inside a statement in the source code which is relevant to one of the
+components in the GUI (eg, jButton1.setText("OK")) then the form editor
+will select the element (eg, jButton1) and will scroll if necessary to
+bring it into view.</font></small></li>
+  <li><small><font face="Helvetica, Arial, sans-serif">If a property is selected in the <a href="properties_page.html">GUI Properties Editor</a>  then
+the source editor will scroll to the relevant line of code (eg, if the
+"text" property is clicked on in the GUI Properties editor, then the
+source editor will scroll to the linejButton1.setText("OK")). </font></small></li>
+  <li><small><font face="Helvetica, Arial, sans-serif">If a component is selected in the <a href="outline_page.html">Outline View</a> then both the Form and source editors will scroll to the relevant positions.<br>
+    </font></small></li>
+</ul>
+<small><font face="Helvetica, Arial, sans-serif"><img src="images/jigloo_horiz_split.PNG" title="" alt="" width="782" height="617"><br>
+<br>
+<br>
+<b><a name="editing"></a>Adding components to the form<br>
+<br>
+</b></font></small><small><font face="Helvetica, Arial, sans-serif">Components
+can be added to the form by clicking on an icon in one of the tabs of
+the component palette at the top of the form editor, and then clicking
+on the form at the desired location. They can also be added by
+right-clicking on a container component in the form editor or in the <a href="outline_page.html">Outline View</a> and choosing one of the menu options. (The menu options can be hidden by a setting in the <a href="preferences_page.html">Preferences Page</a>).</font></small><b><small><font face="Helvetica, Arial, sans-serif"><br>
+<br>
+Setting Layouts for Containers<br>
+<br>
+</font></small></b><small><font face="Helvetica, Arial, sans-serif">Layouts
+can be set in the same way as components are added, by selecting a
+layout from the "Layouts" tab in the palette above the form editor, and
+clicking on the container in the form editor. By default, SWT
+containers (Composites, Groups etc) are given a GridLayout. Swing
+containers usually have a default layout already set, for example
+JPanels</font></small><b><small><font face="Helvetica, Arial, sans-serif"> </font></small></b><small><font face="Helvetica, Arial, sans-serif">have
+a FlowLayout by default. It is easy to experiment with different
+layouts in Jigloo, but at least a brief look at the javadoc for layouts
+is recommended.</font></small><b><small><font face="Helvetica, Arial, sans-serif"><br>
+<br>
+Undoing/redoing changes<br>
+<br>
+</font></small></b><small><font face="Helvetica, Arial, sans-serif">There
+are two ways to undo/redo changes - one is in the Form editor and the
+other is in the Source editor. The keystrokes are the same in either
+case (eg, Ctrl-Z, Ctrl-Y), but in the unlikely event that something
+goes wrong in the form editor then undoing a change in the source
+editor is the safest way to restore the code.<br>
+</font></small><b><small><font face="Helvetica, Arial, sans-serif">
+</font></small><small><font face="Helvetica, Arial, sans-serif"><br>
+Copy/Cut/Paste/Delete<br>
+</font></small></b><small><font face="Helvetica, Arial, sans-serif"><br>
+The form editor supports cut/copy/paste/delete of elements through the usual keystrokes or menu options.</font></small><small><font face="Helvetica, Arial, sans-serif"><b><br>
+<br>
+Moving components around<br>
+<br>
+</b>Components can be rearranged inside a container by dragging them
+using the mouse. Components can be dragged by clicking on the center of
+the component, or dragging one of the blue regions of the border around
+a selected component or components.<br>
+<b><br>
+Resizing components<br>
+</b><br>
+Except in the Swing GridBag, and SWT Grid layouts, components can be
+resized by dragging one of the black regions in the border of a
+selected component. If multiple components are selected then they will
+all be given the same size, which can be a useful time-saver.<b><br>
+<br>
+<a name="parsing_code"></a>Parsing Code<br>
+</b><br>
+To read about how Jigloo parses the java code, and how to control it, read <a href="code.html">this</a> section.<br>
+</font></small><small><font face="Helvetica, Arial, sans-serif"><br>
+</font></small></body></html>

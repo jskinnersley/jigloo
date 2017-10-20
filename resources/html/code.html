@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Java Code</title></head><body bgcolor="white"><font face="Helvetica, Arial, sans-serif"><big><b>Java Code and Jigloo</b></big></font><small><font face="Helvetica, Arial, sans-serif"><b><br>
+<br>
+<a name="parsing"></a><big>Parsing Code</big><br>
+</b><br>
+Jigloo parses the java class to construct the visual representation of
+the form. If you edit the code in the source editor then your changes
+will be reflected in the form editor. However, this might take a few
+seconds, so if you are making lots of changes to the java code you
+might want to disable parsing temporarily till you have made your
+changes. You can toggle parsing on/off by hitting Ctrl+Alt+P in the
+source editor, or hitting the "Toggle Parsing" button in the <a href="outline_page.html">Outline View</a>.<br>
+<br>
+Jigloo is able to parse most common Java techniques for building GUIs
+as adopted by most popular GUI builders. It is also able to accomodate
+hand-written code to a certain degree. However, it does have
+limitations and these include:<br>
+</font></small>
+<ul>
+  <li><small><font face="Helvetica, Arial, sans-serif">for or while loops - if multiple components are created or properties set inside a loop then Jigloo will not recognise them.</font></small></li>
+  <li><small><font face="Helvetica, Arial, sans-serif">if/then/else statements - Jigloo will parse all parts of an if/then/else statement. <br>
+    </font></small></li>
+  <li><small><font face="Helvetica, Arial, sans-serif">components passed as arguments to methods - if a JPanel is passed to a method which fills that JPanel with JButtons, say.<br>
+    </font></small></li>
+</ul>
+<small><font face="Helvetica, Arial, sans-serif">Jigloo starts by
+parsing the constructors of your class. If it finds a call to other
+class methods (eg, if "createComponents" is a method of your class, and
+it is called from your constructor), then those methods will be parsed
+by jigloo as it encounters the method calls. Similarly, if those
+methods call other methods then those methods will be parsed and so on.
+If, in the course of parsing the constructors and all the methods
+called by the constructors etc, one of the "GUI initialization" methods
+is parsed, then jigloo will stop parsing your code. </font><br>
+<font face="Helvetica, Arial, sans-serif"><i>
+  </i></font><br>
+<font face="Helvetica, Arial, sans-serif"><i>
+The "GUI initialization" methods are by default {initGUI,
+initComponents, initialize, open, createPartControl, createContents,
+createControl and createDialogArea} but this list can be changed in the
+  <a href="preferences_page.html">Jigloo Preferences Page</a>.</i> </font><br>
+<font face="Helvetica, Arial, sans-serif">
+  </font><br>
+<font face="Helvetica, Arial, sans-serif">
+If, however, none of the "GUI initialization" methods have been parsed
+then Jigloo will search the code for one of these methods (in the order
+in which they appear in the list) and will parse the first one it
+finds. Eg, if a class has methods "open" and "initialize", then
+"initialize" will be parsed because it appears first in the </font><font face="Helvetica, Arial, sans-serif">"GUI initialization" list. If none of the </font><font face="Helvetica, Arial, sans-serif">"GUI initialization" methods appear in a class, then every method in the class will be parsed. </font><br>
+<font face="Helvetica, Arial, sans-serif">
+  </font><br>
+<font face="Helvetica, Arial, sans-serif">
+Therefore if you always use a method "initializeGUI", say, to create
+your code then you would add "initializeGUI" to the start of the </font><font face="Helvetica, Arial, sans-serif">"GUI initialization" list.</font></small><br>
+<font face="Helvetica, Arial, sans-serif">
+  </font><br>
+<small><font face="Helvetica, Arial, sans-serif">By default, Jigloo
+will not parse code that sets a property of a component outside of the
+method in which that component is created. For instance, if a JLabel is
+created inside the initGUI method, say, but an event handler for a
+JButton's actionPerformed event sets the value of that JLabel's text,
+then that value will not be applied to the JLabel in the form editor.
+This prevents Jigloo from displaying a GUI which is only visible under
+certain conditions (eg, when a button is pressed).<br>
+<br>
+However, if you *do* wish Jigloo to parse such property-setter calls, then there is a setting in the <a href="preferences_page.html">Preferences Page</a> which allows you to do this.</font></small><font face="Helvetica, Arial, sans-serif"><br>
+</font><br>
+
+
+<small><font face="Helvetica, Arial, sans-serif"><br>
+<b><a name="hiding"></a><big>Hiding code from Jigloo</big></b><br>
+<br>
+However, Jigloo recognizes certain comment tags which can be used to customize the parsing/code-generation behaviour of Jigloo.<br>
+<br>
+Code blocks can be hidden from Jigloo using the <b>//$hide&gt;&gt;$</b> and <b>//$hide&lt;&lt;$</b> tags. ie, the </font></small><small><font face="Helvetica, Arial, sans-serif"><b>//$hide&gt;&gt;$</b> tag should be placed on the line before the start of the block you wish to hide<b>, </b></font></small><small><font face="Helvetica, Arial, sans-serif">and the </font></small><small><font face="Helvetica, Arial, sans-serif"><b>//$hide&lt;&lt;$</b> tag should be placed on the line after the end of the block</font></small><small><font face="Helvetica, Arial, sans-serif"><b>. </b></font></small><small><font face="Helvetica, Arial, sans-serif">Any code inside a block marked by these tags will not be parsed by
+Jigloo. </font></small><br>
+<small><font face="Helvetica, Arial, sans-serif"><br>
+If you wish to hide a single line of code, then you can place the customizable <b>//$hide$</b> comment at the end of the line.<br></font></small><br>
+<small><font face="Helvetica, Arial, sans-serif">These tags can be customized in the </font></small><small><font face="Helvetica, Arial, sans-serif"><a href="preferences_page.html">Preferences Page</a>.
+<br>
+<br>
+Thus you are able to design a GUI for each case of an if/then clause by hiding one half of the clause at a time.<br>
+<br>
+<br>
+</font></small><small><font face="Helvetica, Arial, sans-serif"><b><a name="protecting"></a><big>Protecting code from Jigloo</big><br>
+<br>
+</b></font></small><small><font face="Helvetica, Arial, sans-serif">
+Code blocks can also be protected from being modified by Jigloo by using the customizable <b>//$protect&gt;&gt;$ </b>and </font></small><small><font face="Helvetica, Arial, sans-serif"><b>//$protect&lt;&lt;$ </b>(and </font></small><small><font face="Helvetica, Arial, sans-serif"><b>//$protect$</b>) tags, in the same was as the tags for hiding code. </font></small><small><font face="Helvetica, Arial, sans-serif">These tags can also be customized in the </font></small><small><font face="Helvetica, Arial, sans-serif"><a href="preferences_page.html">Preferences Page</a>. </font></small><small><font face="Helvetica, Arial, sans-serif">Any code marked by these tags will not be modified, though Jigloo may add lines of code inside those blocks.<br>
+<small><br>
+</small>
+</font><font face="Helvetica, Arial, sans-serif"><br>
+</font></small><small><font face="Helvetica, Arial, sans-serif">
+<a name="class_creation"></a><b><big>Class Instantiation</big></b><br></font></small><small><font face="Helvetica, Arial, sans-serif"><small><br>
+</small></font><font face="Helvetica, Arial, sans-serif">As jigloo tries
+to render your GUI in it's Form Editor, it needs to insantiate the
+visual classes used and also any classes which are used as properties
+of these visual classes. Also, if a method is called on a visual class
+then Jigloo will try and instantiate the classes passed as parameters
+for this method. However, Jigloo will not instantiate any other
+classes. If you find that Jigloo is instantiating a class that you do
+not want it to instantiate, add this class to the "Forbidden
+superclasses" list in the "Class creation" tab of </font></small><font face="Helvetica, Arial, sans-serif"><small>the <a href="preferences_page.html">Jigloo Preferences Page</a>. </small></font><small><font face="Helvetica, Arial, sans-serif">You can define single classes or packages of superclasses which can or
+cannot be instantiated. Note, you are specifying superclasses, so if
+you allow/deny a superclass, then you are also allowing/denying any
+extensions of that superclass.</font></small><small><font face="Helvetica, Arial, sans-serif"></font></small><br>
+
+<br>
+<small><a name="ext_strings"></a><font face="Helvetica, Arial, sans-serif"><b><big>Externalizing Strings</big></b></font><br>
+
+<br>
+</small><span style="font-family: arial;"><small><b>Note:</b> If you are working on classes created by Jigloo 2.7.2 which use
+the getExternalizedString method, then you will need to change this
+method to be static before Jigloo 3.0 will be able to get the value of
+the externalized string.</small><br>
+<br>
+</span>
+
+
+<span style="font-family: arial;"><small>Jigloo recognizes Strings
+externalized by Eclipse's "externalize strings" action, which creates a
+ResourceBundle accessor class and the appropriate calls in your code.<br>
+<br>
+
+Jigloo will parse these calls, search for the properties file related
+to the ResourceBundle, and display the externalized string in the Form
+Editor. If it can't find the properties file, or the project has not
+been built yet, then it will display the key for the externalized
+string surrounded by "$" signs.</small>
+<br>
+<br>
+<b><br>
+<a name="code_gen"></a>Code Generation<br>
+<br>
+</b></span><small><font face="Helvetica, Arial, sans-serif">Jigloo will generate new code in accordance with the user-defined preferences set in the Jigloo <a href="preferences_page.html#generation">preferences page.</a> You can choose whether to generate elements inside getter methods
+(available for Swing forms only) or whether to enclose them inside
+braces, comment tags or blank lines. The advantages of enclosing
+elements inside braces are:<br>
+</font></small>
+<ul>
+<li><small><font face="Helvetica, Arial, sans-serif">when an element
+is moved, if you have placed any custom code relating directly to that
+element inside it's braces then that custom code will be guaranteed to
+be moved also. If braces are not used then that code might or might not
+be moved, and should probably be placed inside a totally separate
+method instead.</font></small></li><li><small><font face="Helvetica, Arial, sans-serif">though unusual, nested braces can actually clarify the parent-child relationships peculiar to GUI code.</font></small></li>
+</ul>
+<small><font face="Helvetica, Arial, sans-serif">If you change
+your code-generation style, you may want to completely re-format your
+code according to the new style (say, you decide to change from using
+spaces to separate code elements to using braces). </font></small><small><font face="Helvetica, Arial, sans-serif"> Jigloo does not do this automatically since it is a time-consuming operation. </font></small><small><font face="Helvetica, Arial, sans-serif">After changing your
+preference, you can right-click on the form editor and choose the
+"Source-&gt;Reformat code to current coding style" option. <br>
+<br>
+You can also use this powerful option to re-format code generated by hand or by other GUI builders.<br>
+<br>
+<b>Note on converting from getters:</b> If you are converting from
+using getters to using code blocks, the getter methods will be deleted
+from the code, so that if you are explicitly calling these getters from
+your own code, or from other classes, these getters will need to be
+regenerated to return the corresponding fields - but the Eclipse
+context menu options can be used to do this easily. Any references to
+the getter methods from code that is being controlled by Jigloo,
+however, will be changed to refer directly to the fields themselves, so
+the code will only need to be repaired if, for example, you are calling
+myJFrame.getJPanel1() from an external class after reformatting
+MyJFrame to not use getters..<br>
+<br>
+<img src="images/sourceOptions.PNG" title="" alt="" align="left" height="123" width="431"></font></small><br>
+<span style="font-family: arial;">
+<br>
+</span></body></html>

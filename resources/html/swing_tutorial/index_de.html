@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Jigloo Swing Tutorial</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Win32)">
+	<META NAME="AUTHOR" CONTENT="J&uuml;rgen Sauer">
+	<META NAME="CREATED" CONTENT="20100517;14530000">
+	<META NAME="CHANGEDBY" CONTENT="J&uuml;rgen Sauer">
+	<META NAME="CHANGED" CONTENT="20100517;14530000">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-right: 0.59in; margin-top: 0.49in; margin-bottom: 0.79in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; line-height: 115%; widows: 2; orphans: 2 }
+		P.western { font-family: "Calibri", sans-serif; font-size: 11pt; so-language: de-DE }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 11pt }
+		P.ctl { font-family: "Calibri", sans-serif; font-size: 11pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<DIV TYPE=HEADER>
+	<DIV ALIGN=RIGHT>
+		<TABLE WIDTH=234 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+			<COL WIDTH=167>
+			<COL WIDTH=39>
+			<TR>
+				<TD WIDTH=167 HEIGHT=39>
+					<P LANG="de-DE" ALIGN=RIGHT><FONT FACE="Cambria, serif"><FONT SIZE=4>Jigloo
+					Swing Tutorial</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=39 BGCOLOR="#c0504d">
+					<P LANG="de-DE" ALIGN=CENTER><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>15</SDFIELD></P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DIV>
+	<P LANG="de-DE" STYLE="margin-bottom: 0.45in; line-height: 100%"><BR>
+	</P>
+</DIV>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.19in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Jigloo Swing Tutorial</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>In diesem einfachen
+Tutorial wird eine kleine Anwendung mit einem &quot;&Uuml;ber&quot;-Dialog,
+eine Men&uuml;leiste erstellt, sowie der Code zum &Ouml;ffnen und
+Schlie&szlig;en des Dialoges erstellt. Sie verwenden das SWING
+GroupLayout zur Anordnung der Elemente auf beiden JFrame-Komponenten
+und im JDialog verwenden. Danach werden Swing Aktionen  verwendet, um
+den Oberfl&auml;chenelementen Funktionalit&auml;ten zuzuordnen.<BR>
+<BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Themen:</B></FONT></FONT></P>
+<UL>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-top: 0.19in; margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Anordnen von Elementen
+	mit GroupLayout - Verankern und Positionierung sowie Gr&ouml;&szlig;e
+	der Elemente mit Hilfe des Drop-down-Men&uuml;s</FONT></FONT></P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Hinzuf&uuml;gen von
+	Aktionen zu Men&uuml;punkten und Schaltfl&auml;chen - und
+	Verkn&uuml;pfung von &quot;Accelerators&quot; und &quot;Hot Keys&quot;
+	(Mnemonics) mit Aktionen</FONT></FONT></P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Navigieren zwischen
+	visuellen Elemente im Baum und ihren Code</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3>
+	</FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Hinzuf&uuml;gen
+	mehrerer Elemente des gleichen Typs zu einem Formular</FONT></FONT></P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US">Multi</SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>-Auswahl</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US">
+	Elemente </SPAN></FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>&quot;Surround by&quot;
+	Aktion - n&uuml;tzlich f&uuml;r die Zeiten, in denen man erkennt,
+	dass man einen Scroll-Bereich </FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Erzeugung mehrerer
+	visueller &quot;root&quot; Elemente im gleichen Formular - in diesem
+	Fall ein JFrame und ein JDialog</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3>
+	</FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.19in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>&Auml;ndern von
+	Eigenschaften in den Rubriken &quot;Basic &quot; und &quot;Expert&quot;
+	im &quot;GUI-Eigenschaften&quot;-Editor.</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3>
+	</FONT></FONT>
+	</P>
+</UL>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR>Zun&auml;chst
+ben&ouml;tigen Sie ein Java-Projekt und (vorzugsweise) ein Paket f&uuml;r
+die enthaltenen Klassen. <BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Strg
++ N</B></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>
+ist ein schneller Weg, um den &quot;Create&quot;-Dialog zu &ouml;ffnen,
+mit dem Sie diese Schritte durchf&uuml;hren k&ouml;nnen, ansonsten
+per rechter Maustatste auf das Package
+src-&gt;New-&gt;Other-&gt;GUI-Forms-&gt;Swing-&gt;JFrame.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erstellen des
+Haupt-JFrame</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erzeugung eines
+JFrame<BR></B></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Strg
++ N zeigt den &quot;Create&quot;-Dialog, aus dem Sie &quot;GUI-Formulare&gt;
+Swing-&gt; JFrame&quot; ausw&auml;hlen sollten.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_4ec6afec.png" NAME="Bild 1" ALIGN=BOTTOM WIDTH=561 HEIGHT=453 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>W&auml;hlen Sie Ihr
+Editor-Pr&auml;ferenzen </B></FONT></FONT>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Sie haben einen Jigloo
+Editor, dessen Aussehen wir &auml;ndern wollen. Klicken Sie auf den
+&quot;Open Jigloo Pr&auml;ferences Editor&quot;-Knopf in der
+Symbolleiste des Jigloo Editors links. Das &bdquo;Eclipse-preferences&ldquo;
+Fenster erscheint ein Fenster und Jigloo ist ausgew&auml;hlt. W&auml;hlen
+Sie &quot;Appearance and Behaviour&quot; und dann &quot;Tabbed
+Panels&quot;. Dies ist n&uuml;tzlich, wenn Sie Ihren Design-Bereich
+maximieren wollen (aber &quot;Split-pane&quot; kann n&uuml;tzlich
+sein, wenn Sie sofort die Verbindung zwischen Code und GUI sehen
+wollen). <BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_24499f27.png" NAME="Bild 2" ALIGN=BOTTOM WIDTH=715 HEIGHT=572 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Nun
+klicken Sie auf &quot;OK&quot; und schlie&szlig;en und den Jigloo
+Editor und &ouml;ffnen Sie ihn wieder (per rechter Maustaste auf
+Datei im Package Explorer-&gt;Open with-&gt;Form Editor). <BR>Wenn
+sich Ihre Java-Klasse nicht sofort wieder im Jigloo Editor &ouml;ffnet,
+k&ouml;nnen Sie sicherstellen, dass das Formular Jigloo Editor
+verwendet, indem Sie mit der rechten Maustaste auf die Klasse und die
+Auswahl &quot;Open with -&gt; Form-Editor&quot; klicken.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_mdf40424.png" NAME="Bild 3" ALIGN=BOTTOM WIDTH=518 HEIGHT=314 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Maximieren von Jigloo</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Wahrscheinlich finden
+Sie die Arbeit leichter, wenn Sie so viel wie m&ouml;glich von dem
+GUI-Design sehen k&ouml;nnen, das Sie erstellen. Also klicken Sie
+doppelt auf den Registerkopf der Registerkarte des Editors,  und er
+wird den meisten Teil der Oberfl&auml;che einnehmen... Sie haben so
+einen &Uuml;berblick &uuml;ber den Property-Editor und den
+Form-Designer.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m3e241cb8.png" NAME="Bild 4" ALIGN=BOTTOM WIDTH=559 HEIGHT=437 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B><BR></B></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.14in; page-break-before: always">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Das Layout als
+GroupLayout erstellen</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Sie k&ouml;nnen nun
+entweder das GroupLayout Symbol in der Kategorie &quot;Layout&quot;-Palette
+ausw&auml;hlen, oder mit der rechten Maustaste auf den JFrame
+klicken, und &quot;Set Layout-&gt; GroupLayout&quot; w&auml;hlen.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m2767077f.png" NAME="Bild 5" ALIGN=BOTTOM WIDTH=456 HEIGHT=460 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Wenn
+Sie Java 6 verwenden, dann wird Code f&uuml;r das
+javax.swing.GroupLayout, (das Teil der Java 6 ist)  generiert.<BR>Wenn
+Sie sich nicht mit Java 6 arbeiten, wird Jigloo
+org.jdesktop.layout.GroupLayout verwenden (das &Auml;quivalent des
+swing GroupLayout), und Jigloo wird Sie wissen lassen, dass sie die
+Datei Swing-Layout-1.0.jar Datei Ihrem hinzuzuf&uuml;gen m&uuml;ssen.</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="">
+<BR><BR></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_40197e05.png" NAME="Bild 6" ALIGN=BOTTOM WIDTH=440 HEIGHT=158 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>F&uuml;gen Sie
+Schaltfl&auml;chen OK und Abbrechen ein<BR></B></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>W&auml;hlen Sie das
+Symbol aus der JButton &quot;Components&quot;-Palette und bewegen Sie
+den Cursor nach unten rechts in der Form, bis er einrastet. <BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m5ca7ad19.png" NAME="Bild 7" ALIGN=BOTTOM WIDTH=105 HEIGHT=60 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR>Im
+dann sich &ouml;ffnenden Dialog k&ouml;nnen Sie Name und Text (und
+Icon-Set, wenn Sie m&ouml;chten) f&uuml;r die Schaltfl&auml;che
+eingeben, sofern Sie diese Option in den &quot;Jigloo preferences&quot;
+(Prompt for name when adding components) ausgew&auml;hlt haben. Sie
+k&ouml;nnen dies aber auch sp&auml;ter tun. Wir erstellen so die
+Schaltfl&auml;che &bdquo;Cancel&ldquo; (deutsch:
+&quot;Abbrechen&quot;).<BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_544263cc.png" NAME="Bild 8" ALIGN=BOTTOM WIDTH=457 HEIGHT=389 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>F&uuml;gen
+Sie auch einen &bdquo;OK&ldquo;-Knopf hinzu. (Mit Strg und Shift
+k&ouml;nnen Sie mehrere Schaltfl&auml;chen einf&uuml;gen, ohne zur
+Komponentenpalette zur&uuml;ckkehren zu m&uuml;ssen).<BR>.<BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m1edaba94.png" NAME="Bild 9" ALIGN=BOTTOM WIDTH=159 HEIGHT=54 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Wenn
+Sie die Kn&ouml;pfe in der unteren rechten Ecke des Formulars
+positioniert haben, sollten Sie (wie im Bild oben) einen schwachen
+roten Pfeil sehen, der Den Knopf mit der rechten Seite des Formulars
+verbindet, sowie einen blauen Pfeil, der ihn an den unteren Rand des
+Formulars bindet. <BR>Sie k&ouml;nnen die Verankerung &auml;ndern,
+indem Sie den Knopf an einen anderen Rand schieben, oder Sie
+verwenden hierf&uuml;r das DropDown-Element in der oberen rechen Ecke
+des Elements.<BR>Es gibt dort eine Menge Men&uuml;-Optionen, die das
+Verhalten von Kn&ouml;pfen bei Gr&ouml;&szlig;en&auml;nderung des
+Formulars betreffen. </FONT></FONT>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<IMG SRC="index_de_html_a8c4c99.png" NAME="Bild 10" ALIGN=BOTTOM WIDTH=299 HEIGHT=156 BORDER=0><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR></FONT></FONT><BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Beschriften Sie die
+Schaltfl&auml;chen mit &quot;OK&quot; und &quot;Abbrechen&quot; &ndash;
+Sie k&ouml;nnen die Beschriftung mit einem Doppelklick auf die
+Schaltfl&auml;che zum Bearbeiten des Textes &ouml;ffnen, oder
+verwenden Sie die Eigenschaft &quot;Text&quot;.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_3587008f.png" NAME="Bild 11" ALIGN=BOTTOM WIDTH=82 HEIGHT=50 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>&nbsp;&nbsp;&nbsp;&nbsp;
+</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US">
+<IMG SRC="index_de_html_7edfa126.png" NAME="Bild 12" ALIGN=BOTTOM WIDTH=82 HEIGHT=50 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erstellen Sie die
+Kn&ouml;pfe OK und Abbrechen mit gleicher Breite und mit der gleichen
+Schriftart</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>W&auml;hlen Sie die
+Schaltfl&auml;chen OK und Abbrechen aus. Dazu gibt es zwei
+M&ouml;glichkeiten:</FONT></FONT></P>
+<UL>
+	<LI><P LANG="de-DE" STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR>
+	Dies &quot;Gummiband&quot;-Technik - Shift,  und ziehen Sie dann die
+	Maus &uuml;ber die beiden Tasten, dann die Maustaste loslassen,
+	oder<BR></FONT></FONT><SPAN LANG="en-US"><IMG SRC="index_de_html_d23cd63.png" NAME="Bild 13" ALIGN=BOTTOM WIDTH=152 HEIGHT=61 BORDER=0></SPAN><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3>
+	</FONT></FONT>
+	</P>
+	<LI><P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.19in; line-height: 100%">
+	<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR>STRG und einzeln
+	anklicken</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3>
+	</FONT></FONT>
+	</P>
+</UL>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Klicken Sie auf das
+&quot;Make selected elements the same width&quot;-Symbol in der
+Symbolleiste Alignement. <BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_39d7141.png" NAME="Bild 14" ALIGN=BOTTOM WIDTH=458 HEIGHT=165 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>W&auml;hlen
+Sie dann die OK-Taste. Das Symbol hat sich nun ge&auml;ndert: &quot;Unlink
+the selected element's width from all other elements&quot; kann
+verwendet werden, um ein Element von der gemeinsamen Breite zu
+l&ouml;sen.<BR> <BR>Nun w&auml;hlen Sie beide Tasten wieder aus und
+&auml;ndern Sie die Schrift auf &quot;Bold (deutsch: fett)&quot;,
+wobei Sie auf die Eigenschaft &quot;Font&quot; in den
+&quot;GUI-Eigenschaften&quot; anzeigen lassen, indem Sie auf  den
+kleinen &ldquo;...&quot;-Knopf klicken.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_3ee997ce.png" NAME="Bild 15" ALIGN=BOTTOM WIDTH=509 HEIGHT=331 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erg&auml;nzen Sie
+eine JTable-Komponente</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>F&uuml;gen Sie ein
+JTable mit der &quot;Components&quot;-Palette oben links ein.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Oops &ndash; eigentlich
+sollte zuerst ein JScrollPane Element eingef&uuml;gt werden, auf dem
+sich das JTable befinden soll. Anstatt die Aktion r&uuml;ckg&auml;ngig
+zu machen,  k&ouml;nnen Sie mit der rechten Maustaste auf den JTable
+klicken und &quot;Surround by-&gt; JScrollPane&quot;
+w&auml;hlen.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m63a53539.png" NAME="Bild 16" ALIGN=BOTTOM WIDTH=529 HEIGHT=168 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>W&auml;hlen
+Sie nun die JScrollPane (entweder in der Gliederung, oder durch einen
+Klick auf den Scrollbalken. Sollte ein Kindelement allen Platz der
+JScrollpane bedecken, und es ist keine Bildlaufleiste zu sehen, dann
+klicken Sie in die N&auml;he des Randes der JScrollpane, um diese zu
+markieren). Ziehen Sie dann die Seite oder Ecke des JScrollPane so,
+dass sie sich &uuml;ber die ganze Breite erstreckt, und ein bisschen
+gr&ouml;&szlig;er ist. Auch hier sollten rote und blaue Pfeile nun
+anzeigen, dass es sowohl auf der linken als auch der rechten Seite
+der Form verankert ist. <BR><BR>Wenn Sie das Dropdown-Men&uuml;
+&ouml;ffnen, k&ouml;nnen Sie sehen, dass &quot;Expands Horizontally&quot;
+aktiviert ist. Sie k&ouml;nnen das Men&uuml; zum &Auml;ndern der
+Eigenschaften verwenden. Beachten Sie, dass Sie &quot;Expands
+Horizontally&quot; deaktivieren m&uuml;ssten, um es rechts ODER links
+zu verankern.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+ <FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>F&uuml;gen Sie zwei
+JTextField (mit Quick-repeat) und einen JButton ein.</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Nur um ein Gef&uuml;hl
+f&uuml;r das GroupLayout zu bekommen, f&uuml;gen Sie zwei JTextFields
+und einen JButton ein. Dann  w&auml;hlen Sie sie alle aus, und w&auml;hlen
+bei gedr&uuml;ckter Strg-taste per rechter Maustaste &quot;Surround
+by-&gt; JPanel&quot;, und w&auml;hlen Sie f&uuml;r das JPanel das
+Layout &bdquo;GroupLayout&ldquo;. Sie k&ouml;nnen die Gr&ouml;&szlig;e
+des Panels &auml;ndern und es und verschieben, sowie die Gr&ouml;&szlig;e
+der Elemente, bis es  aussehen, was ist unten dargestellt.<BR><BR>Dann
+setzen Sie die &quot;Border&quot;-Eigenschaft des JPanels auf
+&quot;TitledBorder&quot;, um etwas Text (&bdquo;Group One&ldquo;)
+beizuf&uuml;gen.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m4bc4710e.png" NAME="Bild 17" ALIGN=BOTTOM WIDTH=515 HEIGHT=320 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Umgeben Sie das
+JPanel mit einem JTabbedPane indem Sie das JPanel kopieren und in das
+JTabbedPane einf&uuml;gen<BR></B></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Dies zeigt nur das
+Kopieren und Einf&uuml;gen - oder Sie k&ouml;nnten versuchen, mehrere
+Komponenten zu kopieren und einzuf&uuml;gen.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erg&auml;nzen Sie
+eine Men&uuml;leiste (JMenuBar) mit den Men&uuml;s &bdquo;Datei&ldquo;
+und &bdquo;Hilfe&ldquo;</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Nun etwas besonders
+n&uuml;tzliches: F&uuml;gen Sie ein JMenuBar mittels der
+&quot;Menu&quot;-Palette ein.<BR>. <BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_10e45261.png" NAME="Bild 18" ALIGN=BOTTOM WIDTH=466 HEIGHT=412 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Nun
+doppelklicken Sie auf den &quot;jMenu1&quot;-Men&uuml; und &auml;ndern
+Sie den Text in &quot;File&quot; (deutsch: Datei). Dann f&uuml;gen
+Sie ein neues JMenu &quot;Help&quot; in die Men&uuml;leiste ein.<BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m521764a3.png" NAME="Bild 19" ALIGN=BOTTOM WIDTH=79 HEIGHT=57 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>F&uuml;gen Sie eine
+&quot;About&quot;-Aktion (Deutsch: &uuml;ber) und einen Men&uuml;punkt
+in das Hilfe-Men&uuml;</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>W&auml;hlen Sie das
+&quot;AbstractAction&quot;-Symbol aus der &quot;More
+Components-Palette&ldquo;, und klicken Sie dann direkt auf das Men&uuml;
+&quot;Help &quot;. Geben Sie &quot;Action&quot; f&uuml;r die
+Text-Eigenschaft der Aktion, (und nennen Sie die Aktion
+&quot;aboutAction&quot;).<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m64a5a05f.png" NAME="Bild 20" ALIGN=BOTTOM WIDTH=642 HEIGHT=221 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Wenn
+Sie sich die Gliederungsansicht ansehen, werden Sie bemerken, dass
+ein JMenuItem dem Hilfe-Men&uuml; hinzugef&uuml;gt wurde,  und dass
+die aboutAction mit ihm assoziiert ist. Die JMenuItem Texteigenschaft
+erh&auml;lt den Wert der Eigenschaft &bdquo;Text&ldquo; aus der
+AbstractAction.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m24996ba9.png" NAME="Bild 21" ALIGN=BOTTOM WIDTH=261 HEIGHT=241 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Testen Sie das
+Formular mit der Schaltfl&auml;che &quot;Vorschau&quot;<BR></B></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Klicken Sie &quot;Vorschau&quot;
+in der Gliederungsansicht, und klicken Sie auf das Men&uuml; &quot;Hilfe&quot;
+&ndash; Der &quot;About&quot;-Men&uuml;punkt sollte sich nun zeigen.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Sie k&ouml;nnen auch die
+Gr&ouml;&szlig;e des Formulars &auml;ndern und testen, wie es sich
+verh&auml;lt.<BR>Wenn ein Element sich horizontal oder vertikal
+ausdehnt, das aber nicht soll, stellen Sie die passenden &quot;Expands&quot;
+Option ein (siehe Seite 6 unten). Die Optionen &quot;Reset to default
+width/Height&quot; bewirkt, dass ein Element seine Standard-Breite
+oder H&ouml;he beh&auml;lt.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m31c46f7e.png" NAME="Bild 22" ALIGN=BOTTOM WIDTH=501 HEIGHT=406 BORDER=0></SPAN></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.14in; page-break-before: always">
+<BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erstellen eines
+&quot;About&quot;-Dialog-Fensters und die Einbindung in das
+Hauptfenster</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erg&auml;nzen Sie
+einen JDialog</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Entweder Sie klicken mit
+der rechten Maustaste auf einen Bereich au&szlig;erhalb des
+Haupt-JFrame und w&auml;hlen &quot;Add-Container&gt; JDialog&quot;
+oder Sie w&auml;hlen das Symbol aus dem JDialog &quot;Container&quot;-Icon
+und klicken irgendwo au&szlig;erhalb des Haupt-JFrame.<BR>Das wird
+eine v&ouml;llig getrennte Instanz der Klasse JDialog hinzugef&uuml;gt.
+<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m6f27de48.png" NAME="Bild 23" ALIGN=BOTTOM WIDTH=232 HEIGHT=91 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Beachten
+Sie den Knoten in der JDialog Gliederungsansicht. Die rote Umrandung
+zeigt an, dass dieses Element das &quot;aktive&quot; Wurzel-Element
+ist, und im Formular-Editor angezeigt wird.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_1c9665f9.png" NAME="Bild 24" ALIGN=BOTTOM WIDTH=182 HEIGHT=120 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Klicken
+Sie auf den &quot;this&quot;-Knoten &ndash; das Hauptformular
+erscheint. Dann klicken Sie den  &quot;jDialog1&quot; Knoten, und Sie
+sind zur&uuml;ck im soeben erstellten JDialog.<BR>So k&ouml;nnen Sie
+Jigloo verwenden, um mehrere &quot;root design&quot; Elemente in der
+gleichen Java-Klasse zu gestalten.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Setzen Sie das
+GroupLayout und f&uuml;gen ein JLabel-Element und einen OK-Knopf ein.</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>... verwenden Sie daf&uuml;r
+die weiter oben erlernten Techniken.<BR> <BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m68f730c3.png" NAME="Bild 25" ALIGN=BOTTOM WIDTH=252 HEIGHT=133 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR></FONT></FONT><BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.14in; page-break-before: always">
+<BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Setzen Sie 
+HorizontalAlignment auf CENTER (und machen Sie HorizontalAlignment zu
+einer Basic- Eigenschaft)</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>W&auml;hlen Sie das
+Label aus, und im &quot;GUI-Eigenschaften&quot;-Editor &ouml;ffnen
+Sie die &quot;Expert&quot;-Modus mit der rechten Maustaste.
+Navigieren Sie zu &quot;HorizontalAlignment&quot;. &Auml;ndern Sie
+dies in &quot;Center&quot;.<BR>Nun, wenn Sie denken, dass Sie diese
+Eigenschaft sehr oft nutzen, dann mit der rechten Maustaste darauf
+und w&auml;hlen Sie &quot;Set Property Categorie for
+HorizontalAlignment-&gt;Basic&quot;.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_mbc8f5db.png" NAME="Bild 26" ALIGN=BOTTOM WIDTH=458 HEIGHT=236 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Die
+HorizontalAlignment Eigenschaft (f&uuml;r alle Elemente, die es
+haben) wird nun im Rahmen der &quot;Basic&quot;-Eigenschaften
+erscheinen.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Erg&auml;nzen Sie
+Aktionen zur Schaltfl&auml;che OK, um das Dialogfenster zu schlie&szlig;en</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Nun f&uuml;gen Sie
+wieder eine &quot;Close&quot; Aktion ein, um die Form zu schlie&szlig;en.
+W&auml;hlen Sie &quot;AbstractAction&quot; aus der &quot;More
+&ndash;Components&ldquo;-Palette, aber dieses Mal klicken Sie
+irgendwo auf den Editor au&szlig;erhalb des JDialog. Setzen Sie den
+Text auf &quot;OK&quot; und den Namen zu closeAboutAction. Dann gehen
+Sie in die die Gliederungsansicht und ziehen Sie die neu hinzugef&uuml;gte
+Aktion (befindlich in den &quot;Extra-Components&quot;) zur
+Schaltfl&auml;che &quot;OK&quot; des Dialogs. <BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m4ef8f85c.png" NAME="Bild 27" ALIGN=BOTTOM WIDTH=300 HEIGHT=209 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Die
+Aktion sollte nun doppelt angezeigt werden: Einmal unter der
+&quot;Extra-Components&quot; und einmal unter der Schaltfl&auml;che
+&quot;OK&quot; des Dialogs. Wenn Sie die Aktion von der Schaltfl&auml;che
+trennen m&ouml;chten, w&auml;hlen Sie einfach die Aktion unter dem
+Button und dr&uuml;cken Sie die Taste &quot;Entf&quot;. Ein Dialog
+fragt Sie, ob Sie die Aktion wirklich l&ouml;schen wollen, aber
+Jigloo wird wirklich nur die Aktion aus dem Knopf l&ouml;schen, und
+nicht die Aktion selbst! Wenn Sie wirklich die Aktion l&ouml;schen
+wollen, w&auml;hlen Sie sie zuerst unter dem
+&quot;Extra-Components&quot;-Knoten aus.<BR><BR>Nun suchen Sie die
+close-Aktion unter dem OK-Knopf in der Gliederungsansicht, und
+doppelklicken Sie darauf. Der Source Code wird angezeigt und der Code
+der close-Aktion Code wird hervorgehoben.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m58650aa3.png" NAME="Bild 28" ALIGN=BOTTOM WIDTH=690 HEIGHT=225 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR>Bearbeiten
+Sie den Code durch Hinzuf&uuml;gen von </FONT></FONT>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2>getJDialog1().Dispose()</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>so dass der Dialog
+geschlossen wird, wenn die OK-Taste angeschlagen wird.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>F&uuml;gen Sie Code
+ein um das Dialogfenster mit der  aboutAction zu &ouml;ffnen</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Wir werden den Code
+aboutAction hinzuf&uuml;gen, also klicken Sie doppelt auf die
+aboutAction in der Gliederungsansicht. F&uuml;gen Sie folgenden Code
+ein:</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2>getJDialog1().pack
+();</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2>getJDialog1().setLocationRelativeTo
+(null);</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2>getJDialog1().setVisible
+(true);<BR></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Schreibe einen
+Accelerator (Hot-Key) f&uuml;r die &quot;&Uuml;ber&quot;-Aktion<BR></B></FONT></FONT><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Wir wollen die Menschen
+in der Lage versetzen, zu sehen, um was es bei unserer Anwendung
+geht, richtig?<BR>W&auml;hlen Sie die Aktion about, und in den
+GUI-Editor Properties w&auml;hlen Sie die &quot;Accelerator&quot;
+Eigenschaft - sie wird im Rahmen der &quot;Expert&quot;-Knoten sein,
+aber vielleicht wollen sie sie auf die &quot;Basic&quot; Knoten
+verschieben? Wie dies geht, wurde bereits beschrieben. Um die
+Tastenkombination CTRL + SHIFT + A zuzuweisen, dr&uuml;cken Sie diese
+im Eingabefeld f&uuml;r Accelerator, und Sie sollten sehen, dass
+&quot;ctrl shift A&quot; im &quot;Accelerator&quot;-Wert angezeigt
+wird<BR>.  <BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_m75ca10b.png" NAME="Bild 29" ALIGN=BOTTOM WIDTH=249 HEIGHT=232 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Dann
+dr&uuml;cken Sie &quot;Return&quot;, und sofort wird der Code
+aktualisiert.</FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=3><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Sie
+k&ouml;nnen sich auch einen Hot-Key mit der Aktion in &auml;hnlicher
+Weise verbinden. Hier kann der Benutzer einen Men&uuml;punkt durch
+Dr&uuml;cken einer Taste (z.B. &bdquo;A&ldquo;) ausl&ouml;sen. Dies
+funktioniert aber nur, wenn das &uuml;bergeordnete Men&uuml; sichtbar
+ist.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B><BR></B></FONT></FONT><BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.14in; page-break-before: always">
+<BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><B>Das Ausf&uuml;hren
+der Anwendung</B></FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Herzlichen Gl&uuml;ckwunsch!
+Sie sind fertig! Dr&uuml;cken Sie STRG + S, um das Formular zu
+speichern. Ein schneller Weg, um die Main-Methode der Klasse zu
+starten, ist die Schaltfl&auml;che &quot;Run&quot; in der
+Gliederungsansicht.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US"><IMG SRC="index_de_html_7fc7e2dd.png" NAME="Bild 30" ALIGN=BOTTOM WIDTH=238 HEIGHT=55 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><BR><BR>Der
+Hauptrahmen sollte in der Mitte des Bildschirms erscheinen.
+<BR><BR>Hinweis: Wenn Elemente bei der Ausf&uuml;hrung nicht in
+&bdquo;angemessener&ldquo; Gr&ouml;&szlig;e erscheinen, versuchen Sie
+diese im Jigloo Editor auszuw&auml;hlen, und w&auml;hlen Sie &quot;Reset
+to Width / Height&quot; aus dem Men&uuml; Alignement.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Versuchen Sie die
+Tastenkombination CTRL + SHIFT + A &ndash; um das About Men&uuml;
+anzuzeigen - Woo Hoo! <BR><BR>Am Ende k&ouml;nnen Sie auf die
+Schaltfl&auml;che &quot;OK&quot; klicken, was den Dialog schlie&szlig;t.</FONT></FONT></P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 100%">
+<FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>Hinweis: Falls Sie einen
+Fehler &quot;java.lang.UnsupportedClassVersionError: Bad
+Versions-Number in Class-File&quot; werhalten, , stellen Sie sicher,
+Ihr Compiler Compliance Level (mithilfe des Properties-Dialoges des
+Projektes) der gleiche ist, wie der der Java-Version, mit der Sie
+Ihre Klasse ausf&uuml;hren.<BR><BR></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="">
+</SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2><SPAN LANG="en-US">
+<IMG SRC="index_de_html_m82bb4b8.png" NAME="Bild 31" ALIGN=BOTTOM WIDTH=637 HEIGHT=221 BORDER=0></SPAN></FONT></FONT><FONT FACE="Tahoma, sans-serif"><FONT SIZE=2>&nbsp;<BR></FONT></FONT><BR><BR>
+</P>
+<P LANG="de-DE" CLASS="western" STYLE="margin-bottom: 0.14in"><BR><BR>
+</P>
+</BODY>
+</HTML>

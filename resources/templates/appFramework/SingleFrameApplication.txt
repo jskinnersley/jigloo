@@ -1,0 +1,24 @@
+%PKG_NAME%
+
+import javax.swing.JPanel;
+
+import org.jdesktop.application.SingleFrameApplication;
+
+/**
+ * 
+ */
+public class %CLASS_NAME% extends SingleFrameApplication {
+    private JPanel topPanel;
+
+    @Override
+    protected void startup() {
+        topPanel = new JPanel();
+        topPanel.setPreferredSize(new java.awt.Dimension(500, 300));
+        show(topPanel);
+    }
+
+    public static void main(String[] args) {
+        launch(%CLASS_NAME%.class, args);
+    }
+
+}

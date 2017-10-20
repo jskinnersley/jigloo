@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head></head><body bgcolor=white><font face="Helvetica, Arial, sans-serif"><small><br>
+<big><b>Outline View</b></big><br>
+<br>
+The Outline View
+is where the parts of the GUI you are building are layed out in a tree
+format.<br>
+<br>
+</small><small><img src="images/outline1.PNG" title="" alt="" width="283" height="285" align="top"><br>
+<br>
+</small><small>There are three root nodes of the tree:</small><br>
+</font>
+<ul>
+  <li><font face="Helvetica, Arial, sans-serif"><small>Extra components - these include the menu bar and visual components which do not have a parent</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>Non-visual components - these include all non-trivial non-visual components like models for JComboBoxes, ButtonGroups etc</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>the root visual component.</small><br>
+    </font></li>
+</ul>
+<font face="Helvetica, Arial, sans-serif"><small>The outline view is useful for:<br>
+</small></font>
+<ul>
+  <li><font face="Helvetica, Arial, sans-serif"><small>selecting components (click on one or more components)<br>
+    </small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>moving components (just drag components around the tree)<br>
+    </small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>copying/pasting
+components (eg, on Windows platforms, hold down Ctrl while dragging a
+component to paste a copy of the component).</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>adding
+components using the context menu - right-click on a component and
+choose the component to add (if these menu options are enabled in the <a href="preferences_page.html">Preferences Page</a>).</small></font></li>
+</ul>
+<font face="Helvetica, Arial, sans-serif"><small><b><big><br>
+<a name="actions"></a>Editor Actions<br>
+<br>
+</big></b>The other use of the outline page is as a holder for six editor actions.<br>
+<br>
+</small></font><font face="Helvetica, Arial, sans-serif"><small>At the top or left of
+the outline you will see these six icons: <img src="images/outline_actions.PNG" title="" alt="" width="141" height="23">. <br>
+<br>
+From left-to-right, these are:</small><br>
+</font>
+<ul>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The
+"Grid size" button - pressing multiple times reveals or hides a
+snap-grid of various sizes which, when visible, is used by Jigloo to
+align the edges of the components.</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The "Preview" button, which pops up a preview of the form which you can interact with, before saving and compiling the code.</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The "Run" button, which is a short-cut to compiling and running the code.</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The "Parsing" button
+- this toggles code-parsing on and off - if you are going to be typing
+a significant amount into the java editor you might want to turn
+parsing off so that Jigloo does not waste time trying to parse the code
+as you are changing it. Then once you are finished you can turn parsing
+on again and Jigloo will incorporate your code changes. You can also
+toggle parsing by hitting Alt+Ctrl+P in the java editor. If parsing is
+disabled a" <img src="images/parsing_off.gif" title="" alt="" width="16" height="16">parsing disabled" label will appear in the form editor. When Jigloo is parsing the code a "<img src="images/parsing_now.gif" title="" alt="" width="16" height="16">parsing..." label will appear temporarily.</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The "Inheritance"
+button - this toggles the display of inherited or publically-accessible
+fields. If it is blue then only directly-inherited fields are shown; if
+it is green then all inherited fields are shown; if it is red then no
+inherited fields are shown. In the screen shot of the outline view you
+can see several publically-accessible fields of included classes (eg,
+the FlowerPanel.flowerLabel field) as well as fields inherited from the
+superclass (eg, the shopPanel field which is inherited from the
+ShopFrame class, which is the FlowerShop's superclass).</small></font></li>
+  <li><font face="Helvetica, Arial, sans-serif"><small>The "Swing/SWT Toggle", which will convert the GUI between Swing and SWT.</small></font></li>
+</ul>
+<font face="Helvetica, Arial, sans-serif"><small><br>
+</small></font></body></html>

@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>What's new in Jigloo 3.5</title></head>
+<body><font face="Times New Roman, Times, serif"><small><big><b><u><br><big><big>
+What's new in Jigloo 3.5</big></big><br>
+<br>
+</u></b></big></small><small>
+</small></font>
+<table border="0" cellpadding="2" cellspacing="2" height="2528" width="768">
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top">
+      <hr size="2" width="100%"><font face="Times New Roman, Times, serif"></font><font face="Times New Roman, Times, serif"></font>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+        <tbody>
+          <tr>
+            <td valign="top" width="100"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><b><big>SWT_AWT support (1)<br>
+            <br>
+Embedding SWT inside Swing<br>
+</big></b></font></font></font></td>
+            <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">SWT
+controls can now be embedded in Swing components by choosing the new
+"SWT_AWT" icon in the component palette.&nbsp; In the example below, two
+separate SWT areas (in the code, a SWT Shell is created inside an AWT
+Canvas) have been added to a Swing JFrame. In the image, one of the SWT
+controls (an SWT Group) is selected in the GUI editor, and you can see
+the mixing of Swing and SWT components in the Outline view.</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><br>
+<br><b>Palette switching: </b>When a
+SWT control is selected in the GUI editor, the component palette will
+switch from Swing to SWT, allowing other SWT controls to be added to
+the embedded SWT control. In the image below, you can see that the SWT
+component palette is being displayed since a SWT control is selected.
+When a Swing component is selected, the palette will switch back to
+Swing.</font></font><br>
+            </font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><br>
+<img alt="" src="images/SWT_inside_Swing.PNG" border="1" height="326" width="616"></font></font></font></td>
+          </tr>
+        </tbody>
+      </table>
+<font face="Times New Roman, Times, serif"><br>
+</font>
+      <hr size="2" width="100%"><font face="Times New Roman, Times, serif"><br>
+      </font>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+        <tbody>
+          <tr>
+            <td valign="top" width="100"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><b><big>SWT_AWT support (2)<br>
+<br>
+Embedding Swing inside SWT</big></b></font></font></font></td>
+            <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Similarly, Swing components can be embedded in SWT controls (using SWT_AWT)
+. </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">When
+a Swing component is selected in the GUI editor, the component palette will
+switch from SWT to Swing, allowing other Swing components to be added to
+the embedded S</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">wing component</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">.<br>
+            <img alt="" src="images/Swing_inside_SWT.PNG" border="1" height="233" width="606"><br>
+</font></font></font></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+      
+      <hr size="2" width="100%"><font face="Times New Roman, Times, serif"><br>
+      </font>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Parsing enhancements</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Parsing has been considerably enhanced&nbsp;
+- eg, calls to methods which have GUI components as arguments like, setText(jButton1, "jButton1") are now understood. <br>
+            <img alt="" src="images/parsing1.PNG" border="1" height="247" width="292"><br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Graphical layout editors improved<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Visual
+editing of GridBag and JGoodies Form layouts (and also the newly-added TableLayout) has been greatly improved.
+Bars appear at the edges of a component using GridBag, Table or Form layouts,
+allowing columns/rows to be added, deleted, moved or edited. <br>
+            <img alt="" src="images/grid_edge1.PNG" border="1" height="114" width="164"> &nbsp; &nbsp; &nbsp;&nbsp; <img alt="" src="images/grid_edge3.PNG" border="1" height="111" width="181">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><img alt="" src="images/grid_edge2.PNG" border="1" height="61" width="118">&nbsp;</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"> <br>
+            </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Visual feedback on moving components has also been improved.<br>
+</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><img alt="" src="images/grid_move.PNG" border="1" height="116" width="154"><br></font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+
+
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Table Layout supported<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Clearthought's
+TableLayout is now supported - graphical editing is very similar to the
+editing for GridBag and JGoodies Form layouts.<br>
+            <img alt="" src="images/table_layout.PNG" height="209" width="257"><br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+
+      <font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><br>
+      </font></font></font>
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>JGoodies FormLayout support enhanced.<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">JGoodies
+Builders are now supported (in that Builder code is now
+parsed and rendered correctly, and builder-generated components are
+recognized as individual components - Jigloo does not yet have an
+automated way to add
+Builders).
+            <br>
+            <img alt="" src="images/builder_example.PNG" border="1" height="424" width="660"><br></font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Tabbed pane editor format enhanced<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">The
+tabbed layout for Jigloo (separate tabs for source and GUI) has
+significant useability enhancements. Eg, if tabbed layout is selected,
+then when the editor appears initially the code is not parsed until the "GUI editor" tab is selected.</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>View-log button<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">"View
+Log" button in form editor allows user to view the parsing log
+generated by Jigloo for help in diagnosing rendering problems.</font></font><br>
+            </font>
+      <font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Generation
+of Look&amp;Feel code (static call to UIManager.setLookAndFeel) can be
+turned off by an option in the preferences page, allowing look and feel
+to be tested out in Jigloo without changing the code, and set at
+runtime using the swing.properties file.</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+      <font face="Times New Roman, Times, serif"><br>
+</font>
+
+      <hr size="2" width="100%"><br>
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>More widgets <br>
+supported<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Browser,
+CBanner, Link and TreeColumn now appear in the component palette.
+However, the 3.1 controls (CBanner, Link and TreeColumn) will only
+appear when running Eclipse 3.1.<br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+      <font face="Times New Roman, Times, serif"><br>
+      </font>
+      
+
+      
+      
+      <hr size="2" width="100%"><br>
+
+      
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Eclipse 3.1 supported<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Works
+with Eclipse 3.1.&nbsp; There is no 3.1-specific added functionality,
+but the new 3.1 SWT controls will appear in the component palette.<br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      
+      </table>
+
+
+      <font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">
+          </font></font></font>
+
+      <font face="Times New Roman, Times, serif"><small><u><b>
+</b></u></small></font>
+      
+    
+
+  
+
+
+
+
+
+
+
+
+
+      <font face="Times New Roman, Times, serif"><br>
+      </font>
+      
+
+      
+      
+      <hr size="2" width="100%"><br>
+
+
+      
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Added preferences, and quick access to preferences<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">Generation
+of "Set Look &amp; Feel" code can now be chosen to *not* be generated
+(using an added option in the Jigloo references page) when changing the Look &amp; Feel in the GUI editor, allowing Look
+&amp; Feel to be set at run-time using the Swing properties. </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"><br>
+            <br>
+Parsing of constructors and main method before GUI initialization methods can be turned off</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1"> </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">(an added option in the Jigloo references page) </font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">. <br>
+            <br>
+Also</font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">, <b>for quick access to the Jigloo preferences page</b></font></font></font><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">, Ctrl+Alt+J will open up the Eclipse preference dialog, open at the Jigloo page.<br>
+            </font></font></font></td>
+    </tr>
+  </tbody>
+      
+      
+      </table>
+      <br>
+
+      
+
+      
+      
+      <hr size="2" width="100%"><br>
+
+      
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Toggling local fields<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">GUI
+components defined as local fields can now be re-defined as instance
+variables, and vice-versa, using a new option in the "Source..."
+context menu called "Toggle local field definition". Local and inline fields are
+denoted in the Outline view by a green "L" icon decorator in the bottom
+left of a component's icon.<br>
+            <img alt="" src="images/local_element.PNG" border="1" height="65" width="465"><br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      
+      </table>
+      <br>
+      <hr size="2" width="100%"><br>
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+
+
+  <tbody>
+    <tr>
+      <td valign="top" width="100"><font face="Times New Roman, Times, serif"><b><font size="-1"><font size="-1"><big>Cursor property supported<br>
+</big></font></font></b></font></td>
+      <td valign="top"><font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">SWT
+and Swing cursors can now be edited in the GUI property editor.
+(selecting from the pre-defined types - custom cursors are not
+supported). The SWT cursors use the SWTResourceManager, which has now
+been updated. Deleting any existing SWTResourceManager classes will
+force Jigloo to generate a new (updated) SWTResourceManager.<br>
+</font></font></font></td>
+    </tr>
+  </tbody>
+      
+      </table>
+
+      <font face="Times New Roman, Times, serif"><font size="-1"><font size="-1">
+          </font></font></font><ul>
+        
+        
+        
+        
+        
+        
+</ul>
+
+      <font face="Times New Roman, Times, serif"><small><u><b>
+</b></u></small></font></td>
+      
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<br>
+</body></html>

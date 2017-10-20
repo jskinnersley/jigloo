@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Getting Started">
+	<topic label="Quick Start" href="html/getting_started.html#start"/>
+	<topic label="Opening an existing GUI class" 
+		href="html/getting_started.html#old_class"/>
+	<topic  label="Migrating from older Jigloo versions and non-Jigloo classes" 
+		href="html/getting_started.html#migrating"/>
+	<topic label="Creating a new GUI class" 
+		href="html/getting_started.html#new_class"/>
+	<topic label="Jigloo's Basic Components" 
+		href="html/getting_started.html#editor_parts">
+		<topic label="The Form/Source Editor" href="html/editor.html"/>
+		<topic label="The GUI Properties Editor" 
+			href="html/properties_editor.html"/>
+		<topic label="The Outline View" href="html/outline_page.html"/>
+		<topic label="The Preferences Page" href="html/preferences_page.html"/>
+	</topic>
+	<topic label="Preparing your project to use the SWT classes" 
+		href="html/getting_started.html#swt_prep"/>
+	<topic label="Tips and FAQs" href="html/tips.html"/>
+</toc>

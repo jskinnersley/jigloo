@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head></head><body bgcolor="white"><small><font face="Helvetica, Arial, sans-serif"><b>The Preferences Page</b><br>
+<br>
+A lot of Jigloo's behaviour can be customized using a set of preference
+pages, which are accessed by choosing the main menu option
+"Window-&gt;Prefernces" and then selecting the "Jigloo GUI Builder"
+option.<br>
+<br>
+You should see the page below:<br>
+<br>
+<a name="appearance"></a><b><big>General</big></b><br><br>
+The first tab allows you to set the layout of the <a href="editor.html">Form/Source editors</a>, and the background color. It also allows you to change some of the general behaviour of Jigloo.<br>
+<br>
+<img src="images/prefs1.PNG" alt="" height="556" width="449"><br>
+<br>
+<br>
+<a name="parsing"></a><b><big>Code Parsing</big></b><br><br>
+The second tab controls the code parsing behaviour of Jigloo - the effect of these settings is described <a href="editor.html#parsing_code">here</a>.<br>
+<br>
+<img src="images/prefs2.PNG" alt="" height="465" width="437"><br>
+<br>
+<br>
+<a name="generation"></a><big><b>Code Generation</b></big><br><br>
+The third tab controls the code generation. Please read <a href="code.html#code_gen">this section</a> on code-generation options.<br>
+</font></small><br>
+
+
+<small><font face="Helvetica, Arial, sans-serif"><img src="images/prefs3.PNG" title="" alt="" height="402" width="438"><br>
+<br>
+<br>
+<a name="custom"></a><b><big>Custom Classes</big></b><br><br>
+The fourth tab allows you to modify the classes appearing in the "Custom" tab of the Form editor's component palette. <br>
+<br>
+Custom layout classes may be added here - they will be appended to the
+end of the "Layouts" tab in the component palette. Other visual and
+non-visual classes will appear in the "Custom" tab.<br>
+<br>
+<img src="images/prefs4.PNG" alt="" height="465" width="436"><br>
+<br>
+<br>
+</font></small><small><font face="Helvetica, Arial, sans-serif">
+<a name="class_creation"></a><b><big>Class Instantiation<br>
+<br>
+</big></b>The fifth tab allows you to modify the classes which will be
+instantiated as Jigloo parses your Java class for visual classes and
+objects which are used as properties for visual classes. </font></small><small><font face="Helvetica, Arial, sans-serif"><i>Note that Jigloo does not try to instantiate every class it finds - only visual classes and their property classes</i>.
+The default setting (a "*" in the "Allowed" list) allows all classes to
+be made. You can restrict the allowed classes by replacing the asterisk
+with a class-name pattern, where an asterisk in a pattern is a
+wild-card. </font></small><small><font face="Helvetica, Arial, sans-serif">An
+item in the "Allowed Classes" list will allow all classes which match the given pattern. It will
+also allow any class which is an extension of any of those
+classes. Therefore, "javax.swing.*" </font></small><small><font face="Helvetica, Arial, sans-serif">will allow any Swing class, and any class derived
+from any Swing class. Similarly, you are able
+to specify classes or packages which Jigloo will not be allowed to
+instantiate, by populating the "Forbidden" list.<br>
+<br>
+The point of this fine-grained selection of classes is so that if you
+have certain non-visual classes which you do not wish to be created
+while simply editing the code (perhaps they try to connect to a
+database or write to a log file etc) then you can exclude them here,
+while you may wish other non-visual classes to be instantiated by
+Jigloo so you can edit their properties, or so that they may be used as
+parameters for visual classes, say.<br>
+<br>
+</font></small><small><font face="Helvetica, Arial, sans-serif">The parsing of Java code by Jigloo is described in more detail <a href="code.html">here</a>.</font></small><br>
+<small><font face="Helvetica, Arial, sans-serif"><br>
+<img src="images/prefs5.PNG" alt="" height="465" width="436"><br>
+<br>
+<br>
+</font></small><small><font face="Helvetica, Arial, sans-serif"><a name="license"></a><b><big>Licensing<br>
+</big></b><br>
+The last tab allows you to enter in your license code (if you have purchased a commercial license for Jigloo). <br>
+<br>
+A valid license code will disable the automatic generation of a comment
+block at the start of Jigloo-generated code which states the terms of
+the non-commercial license to which you have agreed to abide. <br>
+<br>
+It will also remove the "Non-commercial version of Jigloo" label which appears on the form editor.<br>
+<br>
+<img src="images/prefs6.PNG" title="" alt="" height="402" width="439"><br>
+<br>
+</font></small></body></html>

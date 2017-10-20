@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Jigloo GUI Builder Guide</title>
+  
+  <link rel="STYLESHEET" href="book.css" type="text/css">
+  <meta name="author" content="Cloudgarden.com"></head><body>
+<h2><font face="Helvetica, Arial, sans-serif">Visual Inheritance and custom class properties.</font></h2>
+<big><b><br>
+</b></big><big><small><font face="Helvetica, Arial, sans-serif">Note: We will use
+"custom" here to mean any visual class which is an extension of a Swing or
+SWT class, but is not in the Swing or SWT packages.<br>
+<br>
+<b><i><u>Visual Inheritance</u></i></b><br>
+</font></small></big><big><small><font face="Helvetica, Arial, sans-serif">Jigloo
+supports visual inheritance, in that it allows you to edit visual
+classes which extend other visual custom classes (eg, if you create
+MyComposite1 which extends org.eclipse.swt.widgets.Composite, then you
+can create and edit MyComposite2 which extends MyComposite1).<br>
+<br>
+As long as the custom superclass is public and not abstract, then Jigloo can manage </font></small></big><big><small><font face="Helvetica, Arial, sans-serif">abstract any kind of subclass (public, private, package-access, abstract, etc)</font></small></big><big><small><font face="Helvetica, Arial, sans-serif">.<br>
+</font></small></big><font face="Helvetica, Arial, sans-serif"><br>
+Jigloo can also manage public, non-abstract classes which extend
+abstract or non-public custom superclasses, but a small change needs to
+be made to the subclass - this is discussed in <a href="#abstract">this section.</a></font><br>
+
+
+
+
+
+<b><u><i><font face="Helvetica, Arial, sans-serif"></font></i></u></b><br>
+<big><small><font face="Helvetica, Arial, sans-serif">Continuing with
+the above example, if MyComposite1 contains a publically-accessible
+Group, or has a public getter method for the Group, then you will be
+able to edit that inherited Group in MyComposite2. You can change it's
+properties, add event listeners to it, and also add other widgets to it.</font></small></big><br>
+<p style="font-family: arial;"><b>Note:</b> Jigloo is <b><i>not</i> </b>able to handle inherited protected fields or methods, since it cannot access protected objects.<br>
+</p><p style="font-family: arial;">Any changes you make to a superclass
+will be picked up by the subclasses <i><b>after the changes are saved</b></i>,
+and
+the changes will be apparent in Jigloo. In some cases, however, the
+changes will only become visible when the subclass is reloaded by using
+the "Reload Form Editor" right-click menu option in the Form Editor.<br>
+<br>
+
+<b><u><i><font face="Helvetica, Arial, sans-serif">Custom class properties</font></i></u></b><br>
+</p>
+<p style="font-family: arial;">Besides allowing you to edit inherited elements, Jigloo is also able to allow you to manipulate <font face="Helvetica, Arial, sans-serif">publically-accessible
+fields of custom classes added to the main class. This is discussed <a href="#custom">here.</a></font><br>
+</p>
+
+
+
+<p style="font-family: arial;"><b><big><br>
+<a name="creating"></a>Creating a subclass of a custom visual class</big></b><br>
+</p>
+<p style="font-family: arial;">To create a subclass of an
+existing custom class, start by creating a GUI class in the usual way using
+Jigloo. See <a href="getting_started.html#new_class">"Creating a new GUI"</a> for details if you are not familiar.<br>
+</p>
+
+<p style="font-family: arial;">You will get
+the Jigloo New Wizard as usual, but instead of accepting the offered
+"superclass" field, hit "Browse" and select the desired superclass.<br>
+
+
+</p>
+<p style="font-family: arial;"><img src="images/newForm3.PNG" title="" alt="" width="499" height="499"></p>
+<p style="font-family: arial;"><br>
+If the superclass is abstract, then Jigloo will automatically insert
+stub implementations of all
+abstract methods of the superclass. In addition, if the superclass is
+abstract and/or non-public, then Jigloo will insert the necessary
+methods to enable Jigloo to manage the class - see <a href="#abstract">this section</a> for more details.<br>
+</p>
+<p style="font-family: arial;"><br>
+<big><b><a name="custom"></a>Editing properties of custom classes added to the other classes</b></big><br>
+</p>
+<p style="font-family: arial;">Besides allowing you to edit inherited elements, Jigloo is also able to allow you to manipulate <font face="Helvetica, Arial, sans-serif">publically-accessible
+fields of custom classes added to the main class. For example, if you
+create a
+JPanel (eg, FlowerPanel) which has a publically-accessible JTextField,
+and you add that FlowerPanel (as a custom class) to another visual
+class inside a Jigloo
+editor, then you will be able to manipulate (change properties of, add
+event listeners to etc.) that </font><font face="Helvetica, Arial, sans-serif">JTextField</font><font face="Helvetica, Arial, sans-serif">.<br>
+</font></p>
+<p style="font-family: arial;"><font face="Helvetica, Arial, sans-serif">If,
+for example, you edit the FlowerPanel in Jigloo and save your changes,
+then the new FlowerPanel class will be re-loaded by any Jigloo editor
+which uses a FlowerPanel as one of it's elements. You can experiment
+with this using the FlowerShop example below.<br>
+</font></p>
+
+<p style="font-family: arial;"><font face="Helvetica, Arial, sans-serif"><br>
+<big><b><a name="example"></a>Working with an example</b></big><br>
+</font></p>
+<p style="font-family: arial;">To play with an existing example, create
+a new "GUI
+Form-&gt;Examples-&gt;Swing Inheritance/JavaBean (FowerShop) Example"
+which will insert several classes
+into your project (you might want to create a new "flowershop" package
+for them. The forms are FlowerPanel, ShopFrame, and a subclass of
+ShopFrame called FlowerShop, plus classes to demonstrate Jigloo's
+handling of JavaBean features - custom editors, customizers and
+BeanInfo. When you create the example, FlowerShop
+will be opened in Jigloo's form editor.<br>
+</p>
+
+<p style="font-family: arial;">FlowerShop demonstrates:<br>
+</p>
+<ul>
+  <li><font face="Helvetica, Arial, sans-serif">Manipulation of properties of inherited fields - for example, it sets the Border and LayoutManager on the inherited shopPanel</font></li>
+  <li><font face="Helvetica, Arial, sans-serif">Adding components to inherited fields - it adds four FlowerPanels to the inherited shopPanel</font></li>
+  <li><font face="Helvetica, Arial, sans-serif">Adding event listeners to inherited fields - it adds an ActionListener to the inherited "Checkout" button.</font></li>
+  <li><font face="Helvetica, Arial, sans-serif">Manipulating
+publically-accessible fields of classes added to the main class - eg,
+it sets the text properties of the "flowerLabel" field on each of the
+four added FlowerPanels.</font></li>
+</ul>
+<p style="font-family: arial;">Below is a screen shot of the FlowerShop example. Note that in the Outline view, inherited fields are indicated by a blue icon <img src="images/inherited_dec.gif" title="" alt="" width="16" height="16">.
+If the fields are inherited&nbsp; from a class which is an ancestor of
+this class's superclass then the icon will be green (for example, if
+JFrame1 has a public JButton called button1, and JFrame3 extends
+JFrame2 which extends JFrame1, then in the Outline for JFrame3, button1
+will have a green decorator icon.<br>
+</p>
+<p style="font-family: arial;">Note also the button at the top of the
+Outline view with the same image - pressing this button will
+alternately hide all inherited fields, will hide all fields not
+directly inherited or will show all inherited fields, which can avoid
+clutter in the Outline view.<br>
+</p>
+<p style="font-family: arial;">Note that, for example, a JScrollPane's
+scrollbars will also show up as inherited fields, since they can be
+accessed through public getter methods. Therefore, Jigloo allows you to
+manipulate such objects easily (for example, enabling or disabling
+them). <br>
+</p>
+<img src="images/jigloo_vert_split.PNG" title="" alt="" width="847" height="622"><br>
+<p style="font-family: arial;"><br>
+<a name="abstract"></a><big><b>Extending abstract and non-public classes<br>
+<br>
+</b></big>If a class extends an <small><i><big><b>abstract, private or package-access</b></big></i></small> class then Jigloo requires that the class implement a public static method called <i><b>getGUIBuilderInstance</b></i>
+which should return an instance of the class which has not had it's GUI
+elements initialized. <br>
+</p>
+<p style="font-family: arial;">Any classes created by Jigloo will automatically
+have this method inserted (along with a constructor which does not call
+initGUI), but if you wish to edit an existing class which extends an
+abstract or non-public class then you should implement the <i><b>getGUIBuilderInstance</b></i>
+yourself.<br>
+</p>
+<p style="font-family: arial;">This is an example for a Swing GUI,<br>
+</p>
+<p style="font-family: arial;"><small><tt>&nbsp;&nbsp;&nbsp; /**<br>
+&nbsp;&nbsp;&nbsp; * This method should return an instance of this class which does <br>
+&nbsp;&nbsp;&nbsp; * NOT initialize it's GUI elements. This method is ONLY required by<br>
+&nbsp;&nbsp;&nbsp; * Jigloo if the superclass of this class is abstract. It is not needed<br>
+&nbsp;&nbsp;&nbsp; * in any other situation.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;*/<br>
+&nbsp;&nbsp;&nbsp; public static Object getGUIBuilderInstance() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return new NewJFrame(Boolean.FALSE);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; /**<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* This constructor is used by the getGUIBuilderInstance method to<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* provide an instance of this class which has not had it's GUI elements<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* initialized (ie, initGUI is not called in this constructor).<br>
+&nbsp;&nbsp;&nbsp; &nbsp;*/<br>
+&nbsp;&nbsp;&nbsp; public NewJFrame(Boolean initGUI) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; super();<br>
+&nbsp;&nbsp;&nbsp; }</tt></small><br>
+</p>
+<p style="font-family: arial;">and this is one for an SWT GUI:<br>
+</p>
+<p style="font-family: arial;"><small><tt>&nbsp;&nbsp;&nbsp; /**<br>
+&nbsp;&nbsp;&nbsp; * This method should return an instance of this class which does <br>
+&nbsp;&nbsp;&nbsp; * NOT initialize it's GUI elements. This method is ONLY required by<br>
+&nbsp;&nbsp;&nbsp; * Jigloo if the superclass of this class is abstract or non-public. It <br>
+&nbsp;&nbsp;&nbsp; * is not needed in any other situation.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;*/<br>
+&nbsp;&nbsp;&nbsp; public static Object getGUIBuilderInstance(<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; org.eclipse.swt.widgets.Composite parent, int style) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return new NewComposite(parent, style, Boolean.FALSE);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; /**<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* This constructor is used by the getGUIBuilderInstance method to<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* provide an instance of this class which has not had it's GUI elements<br>
+&nbsp;&nbsp;&nbsp; &nbsp;* initialized (ie, initGUI is not called in this constructor).<br>
+&nbsp;&nbsp;&nbsp; &nbsp;*/<br>
+&nbsp;&nbsp;&nbsp; public NewComposite(org.eclipse.swt.widgets.Composite parent,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int style, Boolean initGUI) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; super(parent, style);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+</tt></small><br>
+</p>
+<p style="font-family: arial;">In addition, if you use Jigloo to create an extension of an abstract class
+then Jigloo will automatically insert stub implementations of all
+abstract methods of the superclass.<br>
+</p>
+<p style="font-family: arial;"><br>
+<br>
+
+</p>
+
+</body></html>

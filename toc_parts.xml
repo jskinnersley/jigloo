@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+
+<toc label="Jigloo's Component Parts">
+	<topic label="Form/Source Editor" href="html/editor.html"/>
+	<topic label="GUI Properties Editor" href="html/properties_editor.html"/>
+	<topic label="Outline View" href="html/outline_page.html"/>
+	<topic label="Preferences Page" href="html/preferences_page.html"/>
+</toc>

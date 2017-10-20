@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>What's new in Jigloo 3.5</title></head>
+<body><font face="Times New Roman, Times, serif"><big><big><b><u>What's new in Jigloo 3.1</u></b></big></big><small><br>
+
+</small></font>
+
+
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+
+  <tbody>
+    <tr>
+      <td valign="top"><font face="Times New Roman, Times, serif"><small><u><b>New features:<br>
+      <br>
+</b></u></small></font>
+      <ul>
+        <li><font face="Times New Roman, Times, serif"><small>Support for
+org.eclipse.ui.part.ViewPart, as part of initial support for Eclipse
+RCP applications. To create a new ViewPart, hit Ctrl+N, then "GUI
+Forms-&gt;RCP-&gt;ViewPart". (<a href="#fig1"><b>See Fig 1</b></a>)<br>
+</small></font></li>
+<li><font face="Times New Roman, Times, serif"><small>JGoodies FormLayout supported (although no support for Builders yet).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Custom Layouts
+supported - add them just like adding a custom class, and they will
+appear in the list of settable layouts, as well as in the layout
+palette.</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig2"><b>See Fig 2</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>Unicode characters are converted to \uNNNN format (when setting text using the GUI property editor) in the generated code.</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig3"><b>See Fig 3</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>Objects
+only created if a visual component in a branch of the main GUI, or a
+property of a visual component (this should severely reduce the need for the "class
+creation" preference fields).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Two
+options for event handling - inline (an anonymous class is generated)
+or handler method (an anonymous class is created, and the event handler
+calls a newly-generated main-class method).</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig4"><b>See Fig 4</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>A
+list of "GUI initialization" methods (which Jigloo will parse
+automatically if they exist) can be specified in the Jigloo preferences
+page - for example, if a user initializes the GUI in a method called
+"createGUI", then they would add this to the list</small></font><font face="Times New Roman, Times, serif"><small>.<br>
+</small></font></li><li><font face="Times New Roman, Times, serif"><small>Text properties can be edited in the small edit area in the property editor, or by a pop-up dialog (for longer text).</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig5"><b>See Fig 5</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>Arrow
+keys can now be used to move GUI elements. eg, in GridBagLayout you
+change the gridx/gridy coordinates, in a null layout you change the x/y
+coordinates, and in a Flow layout you change the ordering of elements.</small><br>
+</font>
+
+  </li><li><font face="Times New Roman, Times, serif"><small>If SHIFT is held down while dragging the mouse, a red rectangle (selection marquee) allows you to multi-select components.</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig6"><b>See Fig 6</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>If
+SHIFT is held down while dragging the border of a component in a
+GridBag or JGoodies Form layout, then the preferredSize property will
+be changed <i><b>instead of</b></i><b><i> </i></b>the gridx/y/width/height values.<br>
+
+          </small></font></li>
+<li><font face="Times New Roman, Times, serif"><small>Added "even space vertical/horizontal" and "make even widths/heights" options in "Align" menu.</small></font><font face="Times New Roman, Times, serif"><small> (<a href="#fig7"><b>See Fig 7</b></a>)</small></font></li><li><font face="Times New Roman, Times, serif"><small>Added SWT "FlowerShop" visual inheritance/JavaBean example (to contrast with the Swing FlowerShop example).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Swing mnemonics and accelerators now handled.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Property values can be typed into a combo-box now (eg, "alt B" can be typed in to an "accelerator" combo-box).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Small performance/useability improvements.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Use code for
+Border creation which only uses the minimum number of necessary
+parameters (eg, for TitledBorder, if only the "title" property is set
+then the BorderFactory.createTitledBorder(String title) method is
+created by Jigloo.</small></font></li><li><font face="Times New Roman, Times, serif"><small>In-line components are recognized - eg, panel.add(new JLabel("inline"));</small></font></li><li><font face="Times New Roman, Times, serif"><small>Works with Eclipse 3.1 (M1-5a)</small></font></li><li><font face="Times New Roman, Times, serif"><small>Custom
+constructors can now be defined in a file called jigloo_constructors,
+as well as in the ".constructros" file, which is more convenient since
+the ".constructors" file is hidden in package explorer.</small></font></li>
+      </ul>
+
+      <font face="Times New Roman, Times, serif"><small><br>
+
+
+      <u><b>Bug Fixes:</b></u><br>
+
+
+      </small></font>
+      <ul>
+<li><font face="Times New Roman, Times, serif"><small>Multiple-classes
+defined in same file are handled correctly now - only the class whose
+name is the same as the class file is now parsed and modified.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Don't include import for custom classes in same package</small></font></li><li><font face="Times New Roman, Times, serif"><small>If items moved
+while multi-selected, layout constraints are managed correctly (eg, in
+GridBag layout, all elements *don't* end up in the same grid box!)</small></font></li><li><font face="Times New Roman, Times, serif"><small>If main class
+was refactored/renamed then changes would not be recognized by Jigloo,
+leading to a number of possible problems. Now, Jigloo listens for
+resource-change events and re-loads FormEditor if a GUI class being
+edited is changed externally (eg, due to a refactoring of the main
+class name).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Custom layouts and constraints are now displayed correctly by Jigloo.</small></font></li><li><font face="Times New Roman, Times, serif"><small>When creating a new class from Navigator (instead of PackageExplorer) class would be created in wrong package.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Parsed all
+"init-gui-like" methods, not just constructors and main (allows an
+init-gui method to be defined but need not be called from a
+constructor).</small></font></li><li><font face="Times New Roman, Times, serif"><small>Handled jars
+added to project build path *not* as "external jars" but as project
+elements (ie, if a jar/zip was added to a project using the "Add jar"
+button in the project's build path tab then Jigloo will be able to
+access classes in it - previously Jigloo could only find classes in
+jars added using the "Add external jar" button.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Fixed JSplitPane appearance when dividerLocation is set</small></font></li><li><font face="Times New Roman, Times, serif"><small>Fixed ownership
+problem when parsing setComponentForPopup in code (ie, JPopupMenu would
+not be linked to correct parent Component). This could also lead to a
+JPopupMenuItem's properties being blank in the property editor.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Fixed problem caused by setting an Absolute layout for the root element of a form.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Changes to Border and JSplitPane layout constraints in code are now picked up when the code is reparsed.</small></font></li><li><font face="Times New Roman, Times, serif"><small>If a container
+had a layout set, and then the code is changed so that the container
+has no layout set, then the default layout will be displayed in the
+form editor.</small></font></li><li><font face="Times New Roman, Times, serif"><small>The creation of
+classes *not* used as properties for visual components has now been
+eliminated. This has led to a speed improvement, and elimination of
+unwanted side-effects. ie, in older versions, the code was parsed and
+if the code : FileHandler fh = new FileHandler("log.txt") was parsed
+then a new FileHandler would have been created by Jigloo (unless this
+was forbidden by using the Jigloo "class creation" preferences page).
+In this version, a new FileHandler would not be created.</small></font></li><li><font face="Times New Roman, Times, serif"><small>Memory-leak fixed</small></font></li><li><font face="Times New Roman, Times, serif"><small>Other small bugs fixed</small></font></li>
+      </ul>
+      </td>
+      <td valign="top">
+      <table border="0" cellpadding="2" cellspacing="2" width="100%">
+        <tbody>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/ViewPart.PNG" align="top" border="1" height="176" width="209"><br>
+            <small><a name="fig1"></a>
+Fig 1</small><br>
+            </font>
+
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/custom_layout1.PNG" align="top" border="1" height="59" vspace="2" width="279"><br>
+            <small><a name="fig2"></a>
+Fig 2</small><br>
+            </font>
+</td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/i18n.PNG" align="top" border="1" height="98" vspace="2" width="227"><br>
+            <small><a name="fig3"></a>
+Fig 3</small><br>
+            </font>
+</td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/events2.PNG" align="top" border="1" height="92" width="218"><br>
+            <small><a name="fig4"></a>
+Fig 4</small><br>
+            </font>
+</td>
+          </tr>
+<tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/text_edit2.png" align="top" border="1" height="149" width="241"><br>
+            <small><a name="fig5"></a>
+Fig 5</small><br>
+            </font>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/multi-sel1.PNG" align="top" border="1" height="65" width="182"><br>
+            <small><a name="fig6"></a>
+Fig 6</small><br>
+            </font>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><font face="Times New Roman, Times, serif"><img alt="" src="images/align.PNG" align="top" border="1" height="228" width="377"><br>
+            <small><a name="fig7"></a>
+Fig 7</small><br>
+            </font>
+            
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<font face="Times New Roman, Times, serif"><small>
+</small></font>
+</body></html>

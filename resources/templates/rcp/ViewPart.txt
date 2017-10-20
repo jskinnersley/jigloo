@@ -1,0 +1,44 @@
+%PKG_NAME%
+
+import org.eclipse.ui.part.ViewPart;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.SWT;
+
+public class %CLASS_NAME% extends ViewPart {
+    public static final String ID_VIEW =
+        "%FULL_CLASS_NAME%"; //$NON-NLS-1$
+
+    Composite composite1;
+    
+    /**
+     * 
+     */
+    public %CLASS_NAME%() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    /* (non-Javadoc)
+     * @see org.eclipse.ui.IWorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
+     */
+    public void createPartControl(Composite parent) {
+        composite1 = new Composite(parent, SWT.NULL);
+        composite1.setLayout(new GridLayout(4, false));
+    }
+
+    /* (non-Javadoc)
+     * @see org.eclipse.ui.IWorkbenchPart#setFocus()
+     */
+    public void setFocus() {
+        // TODO Auto-generated method stub
+    }
+    
+    /**
+     * Cleans up all resources created by this ViewPart.
+     */
+    public void dispose() {
+        super.dispose();
+    }
+    
+}

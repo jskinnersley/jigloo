@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Jigloo GUI Builder Guide</title>
+  
+  <link rel="STYLESHEET" href="book.css" type="text/css">
+  <meta name="author" content="Cloudgarden.com"></head><body bgcolor=white>
+<font face="Helvetica, Arial, sans-serif"></font><span style="font-family: arial;"></span><br>
+
+<h3 style="font-family: arial;"><a name="styles"></a>Setting SWT Styles<br>
+</h3>
+<span style="font-family: arial;"><br>
+The SWT controls have various styles
+which can be used in various combinations to produce a large range of
+variations of the basic controls. You can set and change the style
+parameter for a SWT component using the "Set/change style..." option in
+the right-click context menu. The menu is sub-divided into groups of
+style values, and when a style has been set, an asterisk appears by
+it's name. For a Button, for instance, there are four groups -
+"ARROW/CHECK/PUSH/RADIO/TOGGLE", "FLAT", "UP/DOWN/LEFT/RIGHT/CENTER"
+and "BORDER" - and any one of the styles in the four groups may be
+selected, eg PUSH + FLAT + BORDER. Clicking on a style will toggle it
+between selected and not-selected, and clicking on a style in a group
+when a different style in that group is already selected will replace
+the selected style. Simple experimentation should make the operation of
+the menu clear.<br>
+<img src="images/styles.png" title="" alt="" width="379" height="351"><br>
+</span><br>
+<br>
+<h3 style="font-family: arial;"><a name="laf"></a>Setting Swing LookAndFeel<br>
+</h3>
+
+<span style="font-family: arial;"><br>You can change the LookAndFeel
+for Swing forms by right-clicking anywhere on the form and choosing one
+of the installed LookAndFeels. The L&amp;F will change in the form
+editor, and the required code will be generated. To revert to not
+setting any L&amp;F simply choose the "Reset to default" L&amp;F option.<br>
+<br>
+Sometimes changing between look and feels may not correctly render the
+components, but closing and re-opening the editor should correct this.<br>
+<br>
+To add in a new LookAndFeel to the standard ones, download one (<a href="http://javootoo.l2fprod.com/" target="_blank">javootoo.com</a>
+has lots of them), then add the jar file for that L&amp;F to your JRE's /lib/ext folder. You also
+need to add a few lines to your JRE's /lib/swing.properties file. Here is
+an example swing.properties file (on Windows with the <a href="http://liquidlnf.sourceforge.net/" target="_blank">Liquid L&amp;F</a> and the <a href="http://www.geocities.com/shfarr/" target="_blank">Fh L&amp;F</a> installed):<br>
+<br>swing.installedlafs = motif,windows,metal,liquid,fh<br>
+swing.installedlaf.motif.name = CDE/Motif<br>
+swing.installedlaf.motif.class = com.sun.java.swing.plaf.motif.MotifLookAndFeel<br>
+swing.installedlaf.windows.name = Windows<br>
+swing.installedlaf.windows.class = com.sun.java.swing.plaf.windows.WindowsLookAndFeel<br>
+swing.installedlaf.metal.name = Metal<br>
+swing.installedlaf.metal.class = javax.swing.plaf.metal.MetalLookAndFeel<br>
+swing.installedlaf.liquid.name = Liquid<br>
+swing.installedlaf.liquid.class = com.birosoft.liquid.LiquidLookAndFeel<br>
+swing.installedlaf.fh.name = Fh<br>
+swing.installedlaf.fh.class = com.shfarr.ui.plaf.fh.FhLookAndFeel<br>
+<br>
+Here's an example of using the Fh and Liquid LookAndFeels in Jigloo.<br>
+<br>
+</span><span style="font-family: arial;"><img src="images/laf2.PNG" title="" alt="" width="355" height="238"><br>
+<br>
+</span><span style="font-family: arial;">
+<img src="images/laf.PNG" title="" alt="" width="356" height="364"><br>
+</span><span style="font-family: arial;"></span><br>
+<font face="Helvetica, Arial, sans-serif"><br>
+</font><h3 style="font-family: arial;"><a name="button_groups"></a>Button Groups<br>
+</h3>
+
+
+
+<span style="font-family: arial;"><br>To add multiple JRadioButtons to
+a ButtonGroup, first add a ButtonGroup to the "Non-Visual components"
+node, using the "ButtonGroup" icon in the component palette. Then
+multi-select the JRadioButtons and change their "buttonGroup" property
+to be the name of the ButtonGroup you just added.<br>
+<br>
+</span>
+<h3 style="font-family: arial;"><a name="extra_comps"></a>NonVisual and Extra Components<br>
+</h3>
+
+
+<span style="font-family: arial;"><br>You can add custom classes to
+both the "NonVisual" and "Extra" nodes in the Outline view. In
+addition, you can add ButtonGroups to the Non-visual node using the
+"ButtonGroup" icon in the component palette, and you can add
+JPopupMenus, JDialogs and JWindows to the "Extra components" node. None
+of the components under these nodes will be displayed in the GUI
+editor, but their properties will be editable, and code will be
+generated for them. For instance, you could design multiple JPopupMenus
+and call their setVisible methods from your own code when needed.</span><span style="font-family: arial;"></span><br>
+<br>
+<font face="Helvetica, Arial, sans-serif"><br></font><a name="tab_names"></a><font face="Helvetica, Arial, sans-serif"><b><big>Tab names</big></b></font><br>
+
+
+
+
+<span style="font-family: arial;"><br>
+Tab names in JTabbedPane
+sub-components are something of a special case, since they are not a
+property of the sub-component. To set a tab name, simply right-click on
+the tab and choose the "Set Tab Name" context menu option.<br>
+<br style="font-family: arial;">
+</span>
+</body></html>

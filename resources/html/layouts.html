@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Jigloo GUI Builder Guide</title>
+  
+  <link rel="STYLESHEET" href="book.css" type="text/css">
+  <meta name="author" content="Cloudgarden.com"></head>
+<body bgcolor="white"><span style="font-family: arial;"></span><h3 style="font-family: arial;"><a name="layouts"></a>Changing Layouts</h3>
+<span style="font-family: arial;"><br>
+The layout for containers/composites
+can be set using the context menu or the component/layout palette, and
+also by </span><span style="font-family: arial;">using the "Layout"
+section of the
+"GUI Properties" view</span><span style="font-family: arial;">. <br>
+<br>
+Layout palette: Choose the layout from the component/layout palette,
+and click on the component in the form or in the Outline view.<br>
+<br>
+Context menu: Right-click on a component and
+choose one of the "Set Layout" options. The layout and it's parameters
+will be displayed in the "GUI Properties" view, where it can be edited.
+Eg, the number of columns, margins, etc for a Grid layout can be set
+here.<br>
+</span>
+<br>
+<h3 style="font-family: arial;"><a name="gridbag_layout"></a>GridBagLayout <br>
+</h3><font face="Arial"><br>
+</font><font face="Arial">
+For the Swing GridBagLayout you can drag the sides of
+components to change their gridwidth and gridheight parameters (a
+tooltip box will tell you their current values) and you can change the
+gridx and gridy values by just dragging the component. The best way to
+change the gridx and gridy values is to drag the component by a blue
+region of the selection border, instead of clicking and dragging the
+interior of the component, since this latter method can change the
+parent of the dragged component, while the former method will only
+change the grid values.<br>
+<br>
+</font>
+<table border="0" cellpadding="2" cellspacing="2" width="10%">
+  <tbody>
+    <tr>
+      <td valign="top"><img src="images/GBL1.PNG" title="" alt="" height="337" width="426"><br>
+      <font face="Arial">Here a JTextPane is about to be added at grid position (2,2),&nbsp; indicated by the red box. The top-left position is (0,0).</font></td>
+      <td valign="top"><img src="images/GBL2.PNG" title="" alt="" height="252" width="393"><br>
+      <font face="Arial">Here, the JTextPane has been added and the
+tooltip indicates it's grid position and size. Note that it does not
+fill up a grid cell.</font><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><img src="images/GBL3.PNG" title="" alt="" height="255" width="265"><br>
+      <font face="Arial">To make it fill the grid cell, select a "fill" constraint of "HORIZONTAL", "VERTICAL" or "BOTH"</font><br>
+      </td>
+      <td valign="top"><img src="images/GBL4.PNG" title="" alt="" height="237" width="377"><br>
+      <font face="Arial">Now it fills the cell, and is being dragged up and left, to position 1,1, indicated by the red box.</font><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><img src="images/GBL5.PNG" title="" alt="" height="238" width="416"><br>
+      <font face="Arial">Now it has been moved, and it's bottom-right edge is being dragged to increase it's width by 1 column and it's height by 2 rows.</font><br>
+      </td>
+      <td valign="top"><img src="images/GBL6.PNG" title="" alt="" height="235" width="377"><br>
+      <font face="Arial">Now it has been resized, and the tooltip indicates it's grid x, y, width and height values.</font><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<font face="Arial">The above container had a grid size of 3 columns and
+4 rows. To alter this, set the "columns" and/or "rows" properties of
+the container's layout. This will alter the grid, as shown below. Note
+that these "columns" and "rows" properties are "synthetic" properties,
+and are defined and used by Jigloo to set the GridBagLayout's
+columnWeights, columnWidths, rowWeights and rowHeights array
+properties. After setting the rows or columns, you can modify the
+individual values for columnWeights etc, if needed.</font><br>
+<img src="images/GBL7.PNG" title="" alt="" height="548" width="440"><br>
+<br>
+<font face="Tahoma">However, if you want to change the preferredSize
+property of an element without changing it's gridx, gridy, gridwidth or
+gridheight values, then hold the SHIFT key down while dragging a black
+section of a selected element's border.</font><br>
+<h3 style="font-family: arial;"><a name="jgform_layout"></a>JGoodies FormLayout</h3>
+
+<font face="Arial">The <a target="_blank" href="http://www.jgoodies.com/freeware/forms/index.html">JGoodies FormLayout</a> is supported by Jigloo 3.1. It's
+behaviour inside Jigloo is very similar to that of the GridBagLayout,
+in that the grid x,y,width and height values can be changed by dragging
+the borders of components.<br>
+<br>
+</font><font face="Tahoma">As with the GridBag layout, if you want to change the preferredSize
+property of an element without changing it's gridx, gridy, gridwidth or
+gridheight values, then hold the SHIFT key down while dragging a black
+section of a selected element's border.<br>
+</font><br>
+<font face="Arial">
+The parameter passed to the FormLayout(colSpecs, rowSpecs) constructor
+determines the columns and rows of the layout. Jigloo generates a
+default value of <br>
+<br>
+<font face="Courier New, Courier, monospace">new FormLayout("max(p;5px), max(p;5px), max(p;5px), max(p;5px)",<br>&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "max(p;5px),
+max(p;5px), max(p;5px), max(p;5px)");<br>
+</font><br>
+which creates a layout of four columns and four rows, with each cell
+having a size of 5 pixels or the preferred size of the element which
+occupies that cell (if there is one), whichever one is bigger. You can
+change the "colSpecs" and "rowSpecs" for the layout in Jigloo - a "p"
+specifies the preferred size, while a number followed by "px" specifies
+a size in pixels, so for example "colSpecs={10px, p, 100px, 10px},
+rowSpecs={50px, 50px}" will specify a layout with 4 columns and two
+rows, with the cells in the second column assuming the preferred widths
+of the components which occupy them, and all other cells having
+specified widths and heights. <br>
+</font><font face="Tahoma"><br>
+</font><font face="Arial">
+You can read the documentation on the <a target="_blank" href="http://www.jgoodies.com">jgoodies</a> site for more information on FormLayout. Note that Builders and Factories are not yet supported by Jigloo.<br>
+<br>
+If you use this layout in your code then you need to include the
+forms-1.0.5.jar file in your project's build path. You can find this
+jar file in the jigloo plugin folder, or you can download it from the
+jgoodies site.<br>
+</font><br>
+
+<h3 style="font-family: arial;"><a name="form_anchor_layout"></a>Form
+and Anchor Layouts</h3>
+<span style="font-family: arial;"><br>
+The graphical editing of the SWT FormLayout, and the Swing
+com.cloudgarden.layout.AnchorLayout, is similar to the laying-out of
+components in the Delphi or Visual Studio graphical editors. Components
+can be moved around and resized, but also sides can be anchored so that
+when the container is resized components will be resized with it,
+maintaining a constant relationship to the container's sides. In
+Jigloo, there are two kinds of "anchors" - relative and absolute. If a
+side is anchored absolutely then it will remain a fixed distance in
+pixels from it's parent's respective side. For instance, if the bottom
+side of a component is anchored (with an anchor value of say 100) then
+it will remain fixed 100 pixels from the bottom side of it's parent. If
+the top side is also anchored (with say a value of 150) then the top
+side will remain 150 pixels from the top of it's parent and if it's
+parent is stretched vertically then the component will also stretch
+vertically.<br>
+<br>
+To illustrate the effects of anchoring one or both sides absolutely or
+relatively, consider this simple button:<br>
+<img src="images/anchor1.PNG" title="" alt="" height="118" width="164"><br>
+<br>
+If both left and right sides are anchored absolutely and the frame is
+stretched:<br>
+<img src="images/anchor2.PNG" title="" alt="" height="117" width="256"><br>
+<br>
+If the right side is anchored absolutely but the left side is not
+anchored at all:<br>
+<img src="images/anchor3.PNG" title="" alt="" height="119" width="255"><br>
+<br>
+If </span><span style="font-family: arial;">both left and right sides
+are anchored <i>relatively</i>:</span><br>
+<span style="font-family: arial;"><img src="images/anchor4.PNG" title="" alt="" height="117" width="256"><br>
+<br>
+</span><span style="font-family: arial;">If the right side is anchored
+relatively but the left side is not anchored at all:</span><br>
+<span style="font-family: arial;"><img src="images/anchor5.PNG" title="" alt="" height="117" width="257"><br>
+<br>
+And then one side might be anchored absolutely and the other
+relatively. <br>
+<br>
+In the "Layout" part of the "GUI Properties" editor view, you will see
+an "Anchor" entry when the selected component is managed by an Anchor
+or Form layout. The value for this label will be something like this:
+"[T,r,B]". Upper case means that a side is absolutely anchored, while
+lower case implies it is relatively anchored, so the above label means
+that the top and bottom sides are absolutely anchored, the right side
+is relatively anchored, and the left side is not anchored at all.<br>
+<br>
+To anchor sides using the editor, either click on the "Anchor" label in
+the Layout part of the property editor, or right-click on one or
+several
+components and
+choose the "Anchor..." option. In either case, a dialog will pop up
+allowing you to
+switch between no/absolute/relative anchoring of each of the four sides.<br>
+<img src="images/formLayout.PNG" title="" alt="" height="277" width="245"><br>
+<br>
+The AnchorLayout for Swing components provides only this anchoring
+behaviour, and not the more complex behaviour offered by the SWT
+FormLayout. If you select an AnchorLayout for a component then the
+com.cloudgarden.layout package will be automatically generated inside
+your project, so that the code you need to run your Swing app will all
+be there.<br>
+<br>
+In addition to the "Anchor" options, there are context-menu "Align"
+options for components inside Anchor or Form layouts. If you select
+multiple components you can choose to align them by their left, center
+(horizontally), right, top, center (vertically) or bottom sides, with
+the component on which the context menu was opened being the reference
+component. You can also choose the "Align components...-&gt;Snap to
+grid" option to arrange all the selected components along grid lines
+(if a snap-grid is being used).<br>
+</span><br style="font-family: arial;">
+<h3 style="font-family: arial;"><a name="layout_data"></a>Setting
+layout parameters</h3>
+<span style="font-family: arial;"><br>
+If a component is a child of a
+container with a defined layout, (eg, a SWT Button inside a Composite
+with a Grid layout) then that Button will have a "Grid Constraints"
+entry in the "Layout" part of the GUI Properties view. Below, the GridBag constraints node is opened in the property editor.<br>
+<img src="images/layoutConstraints1.PNG" title="" alt="" height="317" width="270"><br style="font-family: arial;">
+</span>
+<font face="Arial"><br>
+For the Swing <b>GridBagLayout</b>, you can drag the sides of
+components to change their gridwidth and gridheight parameters (a
+tooltip box will tell you their current values) and you can change the
+gridx and gridy values by just dragging the component.<br>
+<br>
+For several kinds of layout (Border, GridBag, SWT Grid, and for
+components of a JSplitPane) there are context-menu options for quickly
+setting some of these parameters, for instance, the "anchor" and "fill"
+parameters for a GridBag layout, or the direction for a Border layout.<br>
+</font>
+<table border="0" cellpadding="2" cellspacing="20" width="300">
+  <tbody>
+    <tr>
+      <td valign="top"><font face="Arial"><img src="images/layoutConstraints2.PNG" title="" alt="" height="352" width="313"></font></td>
+      <td valign="top"><font face="Arial"><img src="images/layoutConstraints3.PNG" title="" alt="" height="351" width="283"></font></td>
+    </tr>
+  </tbody>
+</table>
+<br style="font-family: arial;">
+<span style="font-family: arial;">It is worthwhile reading the javadoc
+for the SWT layouts (and the Swing GridBagLayout) so that these values
+make sense to you - and then combine that with some experimentation
+inside Jigloo to see the actual effect of setting various layout
+parameters. </span><br style="font-family: arial;">
+<br style="font-family: arial;">
+<span style="font-family: arial;">It is also worthwhile examining the
+examples that come with Jigloo to see how certain layout patterns are
+created.</span><br>
+<font face="Helvetica, Arial, sans-serif"><br></font><br style="font-family: arial;">
+</body></html>

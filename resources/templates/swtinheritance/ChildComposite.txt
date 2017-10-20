@@ -1,0 +1,162 @@
+%PKG_NAME%
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+
+import com.cloudgarden.resource.SWTResourceManager;
+
+public class %CLASS_NAME% extends AbstractParentComposite {
+	private Group group1;
+	private Button button2;
+	private Button button3;
+	private Text text1;
+	private Combo combo1;
+
+	{
+		//Register as a resource user - SWTResourceManager will
+		//handle the obtaining and disposing of resources
+		SWTResourceManager.registerResourceUser(this);
+	}
+
+	/**
+	* This method should return an instance of this class which does 
+	* NOT initialize it's GUI elements. This method is ONLY required by
+	* Jigloo if the superclass of this class is abstract. It is not needed
+	* in any other situation.
+	 */
+	public static Object getGUIBuilderInstance(Composite parent, int style) {
+		return new %CLASS_NAME%(parent, style, Boolean.FALSE);
+	}
+	
+	/**
+	 * This constructor is used by the getGUIBuilderInstance method to
+	 * provide an instance of this class which has not had it's GUI elements
+	 * initialized (ie, initGUI is not called in this constructor).
+	 */
+	public %CLASS_NAME%(Composite parent, int style, Boolean initGUI) {
+		super(parent, style);
+	}
+	
+	/**
+	* Auto-generated main method to display this 
+	* class inside a new Shell.
+	*/
+	public static void main(String[] args) {
+		showGUI();
+	}
+		
+	/**
+	 * This is the required abstract method implementation.
+	 */
+	public String getTitle() {
+		return "ChildComposite";
+	}
+	
+	/**
+	* Auto-generated method to display this 
+	* vetest.ParentComposite inside a new Shell.
+	*/
+	public static void showGUI() {
+		Display display = Display.getDefault();
+		Shell shell = new Shell(display);
+		%CLASS_NAME% inst = new %CLASS_NAME%(shell, SWT.NULL);
+		Point size = inst.getSize();
+		shell.setLayout(new FillLayout());
+		shell.setText("This is the ChildComposite");
+		shell.layout();
+		if(size.x == 0 && size.y == 0) {
+			inst.pack();
+			shell.pack();
+		} else {
+			Rectangle shellBounds = shell.computeTrim(0, 0, size.x, size.y);
+			int MENU_HEIGHT = 22;
+			if (shell.getMenuBar() != null)
+				shellBounds.height -= MENU_HEIGHT;
+			shell.setSize(shellBounds.width, shellBounds.height);
+		}
+		shell.open();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch())
+				display.sleep();
+		}
+	}
+
+	public %CLASS_NAME%(Composite parent, int style) {
+		super(parent, style);
+		initGUI();
+	}
+
+	private void initGUI() {
+		try {
+			//note: the size of this composite is inherited from it's parent
+			{
+				super.getButton1().setText("Don't Push Me!");
+				GridData button1LData = new GridData();
+				button1LData.horizontalAlignment = GridData.FILL;
+				button1LData.heightHint = 27;
+				button1LData.grabExcessHorizontalSpace = true;
+				super.getButton1().setLayoutData(button1LData);
+			}
+			{
+				group1 = new Group(this, SWT.NONE);
+				FormLayout group1Layout = new FormLayout();
+				GridData group1LData = new GridData();
+				group1LData.grabExcessVerticalSpace = true;
+				group1LData.verticalAlignment = GridData.FILL;
+				group1LData.grabExcessHorizontalSpace = true;
+				group1LData.horizontalAlignment = GridData.FILL;
+				group1.setLayoutData(group1LData);
+				group1.setLayout(group1Layout);
+				group1.setText("Test Group");
+				{
+					combo1 = new Combo(group1, SWT.NONE);
+					combo1.setText("combo1");
+					FormData combo1LData = new FormData();
+					combo1LData.height = 21;
+					combo1LData.width = 34;
+					combo1LData.left =  new FormAttachment(0, 1000, 71);
+					combo1LData.top =  new FormAttachment(0, 1000, 9);
+					combo1.setLayoutData(combo1LData);
+				}
+				{
+					text1 = new Text(group1, SWT.MULTI | SWT.WRAP | SWT.BORDER);
+					text1.setText("Some\nTest\nText");
+					FormData text1LData = new FormData();
+					text1LData.height = 72;
+					text1LData.width = 103;
+					text1LData.left =  new FormAttachment(0, 1000, 17);
+					text1LData.top =  new FormAttachment(0, 1000, 42);
+					text1.setLayoutData(text1LData);
+				}
+				{
+					button3 = new Button(group1, SWT.PUSH | SWT.CENTER);
+					button3.setText("button3");
+					FormData button3LData = new FormData();
+					button3LData.height = 21;
+					button3LData.width = 49;
+					button3LData.left =  new FormAttachment(0, 1000, 15);
+					button3LData.top =  new FormAttachment(0, 1000, 9);
+					button3.setLayoutData(button3LData);
+				}
+			}
+			this.layout();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+}

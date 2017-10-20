@@ -1,0 +1,43 @@
+%PKG_NAME%
+
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.WindowConstants;
+
+public class %CLASS_NAME% extends %SUPERCLASS_NAME% {
+
+	/**
+	* Auto-generated main method to display this 
+	* JInternalFrame inside a new JFrame.
+	*/
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		%CLASS_NAME% inst = new %CLASS_NAME%();
+		JDesktopPane jdp = new JDesktopPane();
+		jdp.add(inst);
+		jdp.setPreferredSize(inst.getPreferredSize());
+		frame.setContentPane(jdp);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public %CLASS_NAME%() {
+		super();
+		initGUI();
+	}
+	
+	private void initGUI() {
+		try {
+			setPreferredSize(new Dimension(400, 300));
+			setBounds(new Rectangle(0, 0, 400, 300));
+			setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

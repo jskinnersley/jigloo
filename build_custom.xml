@@ -1,0 +1,15 @@
+<project>
+	<target name="build_jar">
+		<jar basedir="c:/workspace-jigloo/jigloo/bin"
+			destfile="c:/workspace-jigloo/jigloo/jigloo.jar" includes="**/*.class" >
+		</jar>
+		
+		<jar basedir="c:/workspace-jigloo/jigloo/src" update="true"
+			destfile="c:/workspace-jigloo/jigloo/jigloo.jar" excludes="**/*.class,**/*.java" >
+		</jar>
+		
+		<copy tofile="c:/eclipse3.4.2/plugins/com.cloudgarden.jigloo_4.6.0/jigloo.jar" 
+			file="c:/workspace-jigloo/jigloo/jigloo.jar"/>
+	</target>
+		
+</project>

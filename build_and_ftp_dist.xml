@@ -1,0 +1,33 @@
+<project>
+	<property name="version" value="4.6.10"/>
+	<property name="short_version" value="4610"/>
+	
+	<zip basedir="c:/jigloo_dist/" includes="plugins/**,features/**"
+		destfile="c:/jigloo_dist/jigloo_${short_version}.zip">
+	</zip>
+	
+	<jar basedir="c:/jigloo_dist/plugins/com.cloudgarden.jigloo_${version}"
+		destfile="c:/jigloo_dist/update_site/plugins/com.cloudgarden.jigloo_${version}.jar">
+	</jar>
+	
+	<jar basedir="c:/jigloo_dist/features/com.cloudgarden.jigloo_${version}"
+		destfile="c:/jigloo_dist/update_site/features/com.cloudgarden.jigloo_${version}.jar">
+	</jar>
+		
+	<ftp chmod="644" verbose="true" password="charlie123" server="cloudgarden1.com" userid="jskinner" action="put"
+		remotedir="/cloudgarden1.com/">
+		<fileset dir="c:/jigloo_dist/">
+			<include name="jigloo_${short_version}.zip"/>
+		</fileset>
+	</ftp>
+	
+	<ftp chmod="644" verbose="true" password="charlie123" server="cloudgarden1.com" userid="jskinner" action="put"
+		remotedir="/cloudgarden1.com/update-site/">
+		<fileset dir="c:/jigloo_dist/update_site/">
+			<include name="features/com.cloudgarden.jigloo_${version}.jar"/>
+			<include name="plugins/com.cloudgarden.jigloo_${version}.jar"/>
+			<include name="site.xml"/>
+		</fileset>
+	</ftp>
+		
+</project>

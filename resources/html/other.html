@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Jigloo GUI Builder Guide</title>
+  
+  <link rel="STYLESHEET" href="book.css" type="text/css">
+  <meta name="author" content="Cloudgarden.com"></head><body bgcolor="white">
+<h3 style="font-family: arial;"><a name="changing_class"></a>Changing
+the class of a GUI component<br>
+</h3>
+
+<span style="font-family: arial;"><br>
+Let's say you either<br>
+</span>
+<ul style="font-family: arial;">
+<li>have added a JRadioButton and then you decide it should be a
+JCheckbox instead</li><li>have added a Composite, filled it with other components, and then
+decide it should be a Group instead</li>
+</ul>
+
+<span style="font-family: arial;">These cases can be solved by
+the "Change Class..." option in the right-click context
+menu. </span><span style="font-family: arial;">Simply choose
+that option and type "JCheckbox" or "Group" into the Dialog that will
+appear,&nbsp; and the change should occur and be visible in the GUI
+editor. <br>
+<br>
+Note that the class you change to <b>must </b>extend the appropriate
+Object, and have an appropriate constructor:<br>
+<b>For SWT</b> - the class must be an extension of an SWT Control and </span><span style="font-family: arial;">have a constructor with (Composite, int)
+parameters.<br>
+<b>For Swing</b> - </span><span style="font-family: arial;">the class
+must extend JComponent and must have a constructor with *no* parameters.</span><br style="font-family: arial;">
+
+<br>
+
+<h3 style="font-family: arial;"><a name="custom_class"></a>Adding
+custom classes (and JavaBeans)<br>
+</h3>
+
+<span style="font-family: arial;"><br>
+<font face="Arial">Let's say you </font></span><font face="Arial">want
+to add a separate GUI component which you have just built
+(let's say it's called DateChooser, an extension of a Composite which
+has components which let you select a date) to the GUI you are
+currently building. In the component palette, choose the "Custom" tab
+and click the "bean" icon. Then click on the form where you want the
+component to go. A dialog will open into which you type the name of
+your custom class, then the usual creation dialog will open, and your
+component will then be placed on the form. Note that your component
+must extend javax.swing.JComponent if it is to be added to a Swing GUI,
+and org.eclipse.swt.widgets.Control for addition to an SWT GUI.<br>
+<br>
+If you add a JavaBean, and you have made a Customizer for it, then
+double-clicking on the bean in Jigloo will open the Customizer. If your
+bean has special property objects, which have constructors with
+parameters, then you need to create a file called ".constructors" and
+place it in the root folder for your project. The file should have one
+line for each special property, with the full class name, then the
+property names of each of the parameters in the constructor, separated
+by semi-colons. Eg, for a my.objects.MyObject property, with a
+constructor MyObject(String name, Color color) and properties "name"
+and "color" (ie, methods getName() and getColor()), then the required
+line would be "my.objects.MyObject;name;color".<br>
+</font><br>
+
+<span style="font-family: arial;">Note that the class you add <b>must </b>extend
+the appropriate Object, and have an appropriate constructor:<br>
+<b>For SWT</b> - the class must be an extension of an SWT Control and </span><span style="font-family: arial;">have a constructor with (Composite, int)
+parameters.<br>
+<b>For Swing</b> - </span><span style="font-family: arial;">the class
+must extend JComponent and must have a constructor with *no* parameters.</span><br style="font-family: arial;">
+
+<font face="Helvetica, Arial, sans-serif"><br></font><font face="Helvetica, Arial, sans-serif">
+To learn about accessing publically-accessible fields of custom classes, read the section on <a href="inheritance.html">inheritance</a>.</font><br>
+
+<br>
+<h3 style="font-family: arial;"><a name="extracting"></a>Extracting
+parts of GUI classes</h3>
+<span style="font-family: arial;"><br>
+<font face="Arial">Let's say you </font></span><font face="Arial">have
+built a form, then decide that part of it would be useful in another
+form. You can either just copy the part, and paste it into your other
+form, or you can choose the "Extract" context-menu option. First,
+select the part which you wish to extract (it might be a JPanel, for
+instance, filled with other components) and choose the "Extract to new
+form" option. You will be prompted for a name, and then the part will
+be saved as a new java class, which you can then edit and include in
+other forms if needed.<br>
+</font><br>
+
+<h3 style="font-family: arial;"><a name="previewing"></a>Previewing the
+GUI</h3>
+
+<br>
+<span style="font-family: arial;">To preview the behaviour of your GUI
+without actually running the
+generated code, hit the "Preview" button at the
+top of the
+"Outline" view </span><span style="font-family: arial;">(<img src="images/preview.gif" title="" alt="" style="width: 20px; height: 20px;" width="20" height="20">)</span><span style="font-family: arial;">. This will pop up a Shell or JFrame with
+a copy of your GUI in
+which all the menus, combo-boxes etc will be active.</span><br>
+<br>
+<h3 style="font-family: arial;"><a name="running"></a>Running the Java
+Code<br>
+</h3>
+<span style="font-family: arial;"><br>
+The generated Java code can be run in the usual way by selecting
+the java file in the Package Explorer and choosing the "Run
+As...-&gt;Java Application" option from the main Eclipse menu.<br>
+<br>
+A quicker way is to hit the "Run" button on the Outline view (<img src="images/run_exec.gif" title="" alt="" width="16" height="16">).
+After a GUI has been run once, a launch configuration is created and
+saved, and can be accessed from the "Run" button in the Eclipse main
+toolbar.</span><br>
+<br>
+<h3 style="font-family: arial;"><a name="toggling"></a>Toggling between
+SWT and Swing<br>
+</h3>
+<span style="font-family: arial;"><br>
+To convert a GUI from Swing to SWT, or from SWT to Swing, click on the
+"Toggle" button(<img src="images/toggle.gif" title="" alt="" style="width: 20px; height: 20px;">) at the top of the Outline panel.
+For all but the simplest of GUIs the change will be irreversible
+because of difficulties in converting layouts etc.<br></span><br>
+<h3 style="font-family: arial;"><a name="javadoc"></a>Viewing Swing/SWT
+Javadoc</h3>
+<h3 style="font-family: arial;"></h3>
+<span style="font-family: arial;">
+To view the Swing or SWT Javadoc for a GUI component (or it's layout,
+if one is set for it) you can right-click on it and choose the "Show
+Javadoc for..." option. <br>
+<br>
+The Swing javadoc is automatically mounted, but you will need to mount
+the SWT javadoc yourself in the following way:<br>
+</span>
+<ol style="font-family: arial;">
+  <li>Find the
+eclipse\plugins\org.eclipse.platform.doc.isv_2.1.0\doc.zip file and
+unzip it to a fresh folder.<br>
+  </li>
+  <li>Right-click on the "swt.jar" node under your project, and choose
+the "Properties" option.</li>
+  <li>In the "Properties" dialog, choose the "Javadoc Location" item,
+and browse to the "reference/api" folder in the unzipped doc folder
+(from step 1).</li>
+  <li>Hit "OK".</li>
+</ol>
+<br>
+
+<blockquote><font face="Arial"><b> </b></font></blockquote>
+<h3 style="font-family: arial;"><a name="examples"></a>Examples</h3>
+<span style="font-family: arial;"><br>
+You can quickly create some examples using the Eclipse "New" wizard
+(you can start it from the Eclipse File-&gt;New-&gt;Other menu option,
+or hit Ctrl+N)</span><font face="Helvetica, Arial, sans-serif">.<br>
+<br>
+Under "GUI Forms" there is an "Examples" section - selecting one of the
+examples will generate the class or classes in their own Java
+package (or you can specify your own location). Some of the examples will generate multiple files, and will
+also generate folders with any icons they might use. They are a quick
+and easy way to generate some files to experiment with, and a good
+demonstration of some GUI techniques.<br>
+<br>
+<img src="images/examples.PNG" title="" alt=""><br>
+<br>
+<br style="font-family: arial;">
+</font>
+<br style="font-family: arial;">
+</body></html>

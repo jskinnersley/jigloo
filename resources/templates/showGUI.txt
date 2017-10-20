@@ -1,0 +1,24 @@
+	/**
+	* Auto-generated method to display this 
+	* Composite inside a new Shell.
+	*/
+	public static void showGUI() {
+		Display display = Display.getDefault();
+		Shell shell = new Shell(display);
+		%CLASS_NAME% inst = new %CLASS_NAME%(shell, SWT.NULL);
+		Point size = inst.getSize();
+		shell.setLayout(new FillLayout());
+		shell.layout();
+		if(size.x == 0 && size.y == 0) {
+			inst.pack();
+			shell.pack();
+		} else {
+			Rectangle shellBounds = shell.computeTrim(0, 0, size.x, size.y);
+			shell.setSize(shellBounds.width, shellBounds.height);
+		}
+		shell.open();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch())
+				display.sleep();
+		}
+	}

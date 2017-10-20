@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>  
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Java Form Editor"
+            icon="resources/icons/form.gif"
+            extensions="java"
+            contributorClass="com.cloudgarden.jigloo.editors.FormEditorContributor"
+            class="com.cloudgarden.jigloo.editors.FormEditor"
+            id="com.cloudgarden.jigloo.editors.FormEditor">
+      </editor>
+      <editor
+            name="GUI Form Editor"
+            icon="resources/icons/form.gif"
+            extensions="form"
+            contributorClass="com.cloudgarden.jigloo.editors.FormEditorContributor"
+            class="com.cloudgarden.jigloo.editors.GenericFormEditor"
+            id="com.cloudgarden.jigloo.editors.GenericFormEditor">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSetPartAssociations">
+      <actionSetPartAssociation
+            targetID="org.eclipse.jdt.ui.A_OpenActionSet">
+         <part id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+      <actionSetPartAssociation
+            targetID="org.eclipse.jdt.ui.CodingActionSet">
+         <part id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+      <actionSetPartAssociation
+            targetID="org.eclipse.jdt.ui.SearchActionSet">
+         <part id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+      <actionSetPartAssociation
+            targetID="org.eclipse.ui.edit.text.actionSet.annotationNavigation">
+         <part  id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+      <actionSetPartAssociation
+            targetID="org.eclipse.ui.edit.text.actionSet.presentation">
+         <part  id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+      <actionSetPartAssociation
+            targetID="org.eclipse.jdt.ui.text.java.actionSet.presentation">
+         <part  id="com.cloudgarden.jigloo.editors.FormEditor"/>
+      </actionSetPartAssociation>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+   </extension>
+
+<!-- ============================================================================================================== -->
+<!-- Editor actions are editor specific, so we need to duplicate them here.                                         -->
+<!-- ============================================================================================================== -->
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            targetID="com.cloudgarden.jigloo.editors.FormEditor"
+            id="org.eclipse.ui.texteditor.ruler.actions">
+         <action
+               label="%Dummy.label"
+               class="org.eclipse.jdt.internal.ui.javaeditor.JavaSelectRulerAction"
+               actionID="RulerClick"
+               id="org.eclipse.jdt.internal.ui.javaeditor.JavaSelectRulerAction">
+         </action>
+      </editorContribution>
+      <editorContribution
+            targetID="com.cloudgarden.jigloo.editors.FormEditor"
+            id="com.cloudgarden.jigloo.editors.actions">
+         <action
+               definitionId="com.cloudgarden.jigloo.commands.openJiglooPrefs"
+               label="Open Jigloo Preferences Page"
+               class="com.cloudgarden.jigloo.actions.OpenJiglooPreferencePageAction"
+               id="com.cloudgarden.jigloo.actions.OpenJiglooPreferencePageAction">
+         </action>
+         <action
+               definitionId="com.cloudgarden.jigloo.commands.toggleParsing"
+               label="Toggle code parsing on and off"
+               class="com.cloudgarden.jigloo.actions.ToggleParsingAction"
+               id="com.cloudgarden.jigloo.actions.ToggleParsingAction">
+         </action>
+         <action
+               definitionId="com.cloudgarden.jigloo.commands.toggleEditors"
+               label="Toggle between source and form editor"
+               class="com.cloudgarden.jigloo.actions.ToggleEditorsAction"
+               id="com.cloudgarden.jigloo.actions.ToggleEditorsAction">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Jigloo"
+            description="Jigloo Actions"
+            id="com.cloudgarden.jigloo.actions.category">
+      </category>
+      <command
+            name="Toggle between source and form editor"
+            description="Toggle between source and form editor"
+            category="com.cloudgarden.jigloo.actions.category"
+            id="com.cloudgarden.jigloo.commands.toggleEditors">
+      </command>
+      <keyBinding
+            string="Ctrl+Alt+T"
+            scope="org.eclipse.ui.textEditorScope"
+            command="com.cloudgarden.jigloo.commands.toggleEditors"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </keyBinding>
+      <command
+            name="Open Jigloo Preferences Page"
+            description="Open Jigloo Preferences Page"
+            category="com.cloudgarden.jigloo.actions.category"
+            id="com.cloudgarden.jigloo.commands.openJiglooPrefs">
+      </command>
+      <keyBinding
+            string="Ctrl+Alt+R"
+            scope="org.eclipse.ui.textEditorScope"
+            command="com.cloudgarden.jigloo.commands.openJiglooPrefs"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </keyBinding>
+      <command
+            name="Pause/restart code parsing"
+            description="Pause/restart code parsing"
+            category="com.cloudgarden.jigloo.actions.category"
+            id="com.cloudgarden.jigloo.commands.toggleParsing">
+      </command>
+      <keyBinding
+            string="Ctrl+Alt+P"
+            scope="org.eclipse.ui.textEditorScope"
+            command="com.cloudgarden.jigloo.commands.toggleParsing"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </keyBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="toc_parts.xml">
+      </toc>
+      <toc
+            file="toc_other.xml">
+      </toc>
+      <toc
+            file="toc_building.xml">
+      </toc>
+      <toc
+            file="toc_starting.xml">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="GUI Forms"
+            id="jigloo">
+      </category>
+      <category
+            name="Swing"
+            parentCategory="jigloo"
+            id="swing">
+      </category>
+      <category
+            name="Swing Application Framework"
+            parentCategory="jigloo"
+            id="appFramework">
+      </category>
+      <category
+            name="SWT"
+            parentCategory="jigloo"
+            id="swt">
+      </category>
+      <category
+            name="RCP"
+            parentCategory="jigloo"
+            id="rcp">
+      </category>
+      <category
+            name="Examples"
+            parentCategory="jigloo"
+            id="examples">
+      </category>
+      <wizard
+            name="SWT Inheritance/JavaBean (FlowerShop) Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewSWTFlowershopWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSWTInheritanceExampleWizard">
+            <description>Creates a SWT FlowerShop, which extends ShopFrame, which is a Composite. Also demonstrates use of a JavaBean (FlowerPanel) which has a custom editor, a customizer and an icon.</description>
+      </wizard>
+      <wizard
+            name="SWT Abstract Inheritance Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewSWTInheritanceWizard"
+            id="com.cloudgarden.jigloo.wizards.NewAbstractInheritanceExampleWizard">
+           <description>A pair of SWT classes which demonstrate extending an abstract superclass.</description>
+      </wizard>
+      <wizard
+            name="SWT DummyEclipse Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewSWTDummyEclipseExampleWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSWTExampleWizard">
+           <description>A mock SWT application which looks a bit like Eclipse.</description>
+      </wizard>
+      <wizard
+            name="SWT Browser Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewSWTBrowserExampleWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSWTBrowserExampleWizard">
+           <description>A simple SWT browser (Eclipse/SWT 3 only), from the Eclipse VE Project.</description>
+      </wizard>
+      <wizard
+            name="Swing SliderGame Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewSwingSliderGameWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSwingExampleWizard">
+            <description>A Swing application using getter methods for it's elements.</description>
+      </wizard>
+      <wizard
+            name="Swing Inheritance/JavaBean (FlowerShop) Example"
+            icon="resources/icons/form.gif"
+            category="jigloo/examples"
+            class="com.cloudgarden.jigloo.wizards.NewInheritanceExampleWizard"
+            id="com.cloudgarden.jigloo.wizards.NewInheritanceExampleWizard">
+            <description>Creates a FlowerShop, which extends ShopFrame, which is a JFrame. Also demonstrates use of a JavaBean (FlowerPanel) which has a custom editor, a customizer and an icon.</description>
+      </wizard>
+      <wizard
+            name="EditorPart"
+            icon="resources/icons/form.gif"
+            category="jigloo/rcp"
+            class="com.cloudgarden.jigloo.wizards.NewEditorPartWizard"
+            id="com.cloudgarden.jigloo.wizards.NewEditorPartWizard">
+            <description>Creates an EditorPart class for an RCP application.</description>
+      </wizard>
+      <wizard
+            name="ViewPart"
+            icon="resources/icons/form.gif"
+            category="jigloo/rcp"
+            class="com.cloudgarden.jigloo.wizards.NewViewPartWizard"
+            id="com.cloudgarden.jigloo.wizards.NewViewPartWizard">
+            <description>Creates a ViewPart class for an RCP application.</description>
+      </wizard>
+      <wizard
+            name="SWT Composite"
+            icon="resources/icons/form.gif"
+            category="jigloo/swt"
+            class="com.cloudgarden.jigloo.wizards.NewCompositeWizard"
+            id="com.cloudgarden.jigloo.wizards.NewCompositeWizard">
+      </wizard>
+      <wizard
+            name="SWT Dialog"
+            icon="resources/icons/form.gif"
+            category="jigloo/swt"
+            class="com.cloudgarden.jigloo.wizards.NewDialogWizard"
+            id="com.cloudgarden.jigloo.wizards.NewDialogWizard">
+      </wizard>
+      <wizard
+            name="SWT Main Application"
+            icon="resources/icons/form.gif"
+            category="jigloo/swt"
+            class="com.cloudgarden.jigloo.wizards.NewSWTAppWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSWTAppWizard">
+      </wizard>
+      <wizard
+            name="Empty SingleFrameApplication"
+            icon="resources/icons/form.gif"
+            category="jigloo/appFramework"
+            class="com.cloudgarden.jigloo.wizards.NewSingleFrameApp0Wizard"
+            id="com.cloudgarden.jigloo.wizards.NewSingleFrameApp0Wizard">
+            <description>Creates an empty Single Frame Application using the Swing Application Framework.</description>
+      </wizard>
+      <wizard
+            name="Sample SingleFrameApplication with menu and toolbar"
+            icon="resources/icons/form.gif"
+            category="jigloo/appFramework"
+            class="com.cloudgarden.jigloo.wizards.NewSingleFrameAppWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSingleFrameAppWizard">
+            <description>Creates a Single Frame Application with menu bar and tool bar.</description>
+      </wizard>
+      <wizard
+            name="JApplet"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewJAppletWizard"
+            id="com.cloudgarden.jigloo.wizards.NewJAppletWizard">
+      </wizard>
+      <wizard
+            name="JFrame"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewJFrameWizard"
+            id="com.cloudgarden.jigloo.wizards.NewJFrameWizard">
+      </wizard>
+      <wizard
+            name="JPanel"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewJPanelWizard"
+            id="com.cloudgarden.jigloo.wizards.NewJPanelWizard">
+      </wizard>
+      <wizard
+            name="JInternalFrame"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewJInternalFrameWizard"
+            id="com.cloudgarden.jigloo.wizards.NewJInternalFrameWizard">
+      </wizard>
+      <wizard
+            name="JDialog"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewJDialogWizard"
+            id="com.cloudgarden.jigloo.wizards.NewJDialogWizard">
+      </wizard>
+      <wizard
+            name="Swing Main Application"
+            icon="resources/icons/form.gif"
+            category="jigloo/swing"
+            class="com.cloudgarden.jigloo.wizards.NewSwingAppWizard"
+            id="com.cloudgarden.jigloo.wizards.NewSwingAppWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Jigloo GUI Builder"
+            class="com.cloudgarden.jigloo.preferences.MainPreferencePage"
+            id="com.cloudgarden.jigloo.preferences.main">
+      </page>
+      <page
+            name="Appearance and Behaviour"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.GeneralPage"
+            id="com.cloudgarden.jigloo.preferences.general">
+      </page>
+      <page
+            name="AppFramework settings"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.AppFrameworkPage"
+            id="com.cloudgarden.jigloo.preferences.appFramework">
+      </page>
+      <page
+            name="Parsing"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.ParsingPage"
+            id="com.cloudgarden.jigloo.preferences.parsing">
+      </page>
+      <page
+            name="Code Generation"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.CodeGenPage"
+            id="com.cloudgarden.jigloo.preferences.codeGen">
+      </page>
+      <page
+            name="Component palette/Custom classes"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.CustomPage"
+            id="com.cloudgarden.jigloo.preferences.customClasses">
+      </page>
+      <page
+            name="Class Creation"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.ClassCreationPage"
+            id="com.cloudgarden.jigloo.preferences.classCreation">
+      </page>
+      <page
+            name="Non-setter methods"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.ClassMethodPage"
+            id="com.cloudgarden.jigloo.preferences.classMethods">
+      </page>
+      <page
+            name="Licensing"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.LicensingPage"
+            id="com.cloudgarden.jigloo.preferences.licensing">
+      </page>
+      <page
+            name="Look and Feel"
+            category="com.cloudgarden.jigloo.preferences.main"
+            class="com.cloudgarden.jigloo.preferences.LookAndFeelPage"
+            id="com.cloudgarden.jigloo.preferences.lookAndFeel">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Jigloo"
+            id="jigloo">
+      </category>
+      <view
+            name="GUI Properties"
+            icon="resources/icons/form.gif"
+            category="jigloo"
+            class="com.cloudgarden.jigloo.views.FormView"
+            id="com.cloudgarden.jigloo.views.FormView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts file="context.xml"/>
+   </extension>
+
+</plugin>

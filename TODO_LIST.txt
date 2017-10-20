@@ -1,0 +1,400 @@
+
+
+titled border of element copied from another - when edited both the original and the copy (in the property editor, but not in code) are changed
+
+When adding menubar - nothing indicates operation
+
+multi-selected two elements (baseline alignment) - cannot be aligned to bottom
+
+buttons OK/Cancel - not originally default width (maybe after linking?)
+
+VERSION 4!!!
+
+When copying element, copy event handler UNLESS using a handler method
+
+When setting event handlers for multiple components, don't set the same handler method for all.
+
+When showing "Go to event handler" in FE, don't show "handler method", or "inline" on end of method name
+
+BUGS: add VT100Terminal - fails because no zero-param constructor. Then try and add another custom component - NPE in FE.handleMouseMove
+
+don't parse getter method more than once - esp when used in GroupLayout calls (but somehow allow "factory" methods to be parsed multiple times)
+
+Allow JDialogs etc to be added to main class - create getter methods - and parse *everything* so that any dialogs will be found.
+
+Internationalization - aloow resource folder to be defined in prefs page
+
+handle JGoodies builders - and also more generalised builders (or Factory classes for creating components)
+
+FormEditor.createClassLoader - setContextClassLoader - makes sure everything uses the same class loader (cpLoader)
+
+Fix L&F changing (re-create all components).
+
+handle paste in GroupLayout (and handle paste in general by setting currentAction to PasteAction)
+selectionAdapter check for import *
+Display import
+320x240 standard size
+
+SWT Forms
+
+GroupLayout
+
+More RCP GUIs
+
+Add preferences page to determine how new components are named (eg, tbl<Name>, menuItem<Name> )
+
+Use descriptor class or properties file to define constructor parameter names and default values.
+
+if L&F set, but not added to code, need to store this in prefs somewhere so that when code is re-parsed the L&F is not re-set.
+
+GroupLayout - 
+    o BUG!!! when a GroupLayout form has textfields with default height and another element is changed,  
+       textfields get set to same height as neighboring buttons, say
+	o when an element is removed, make sure to remove it from GroupLayout!
+	o when aligning components (say, align top) make them all part of the same horizontal (sequential) group.
+	o when moving multiple elements, make sure gaps *directly* between selected elements are preserved
+	Handle moving from one (GroupLayout) container to another properly
+	!!! when element is removed from a different layout and moved to a GroupLayout, remove panel.add(button) lines, say.
+	!!! make sure setVerticalGroup etc is placed after child elements, but also in a part of code from which the layout is visible (and after blocks!!!)
+
+BUG- changing root class from JPanel to JFrame causes child buttons of NewJPanel to disappear
+BUG - JFrame with menu, and GridBagLayout on contentPane - grid covers menu area!!! (jigloo.NewJFrame)
+
+choice list for initGUI methods
+
+add "source" option - main method
+
+non-standard mnemonics
+
+when pasting in grid-like layouts, do it like adding (cross-hair cursor etc)
+
+cheat sheets and better documentation (sell separately?)
+
+adding containers around selected object (as opposed to as child of...)
+
+different arrangement of code - constructors grouped together.
+
+setDefaultLookAndFeelDecorated
+
+right-click event handler options
+
+default event-handler type (inline, handler method, etc)
+
+save sash border position for each form editor, as well as L&F
+
+when filling extra-comp root, properties are inited, but controls not created (problem for Shell) when
+setting properties "text" and "image" - setPropertySimple called instead - could set rootDecorations before that if-statement...
+also, JCP fillExtraCompRoot - does same thing as FormEditor?
+
+====================================================
+
+BUGS:
+1) If component is added to NewSwingApp, with braces, then it is added as "child" of last menu item, and so is deleted if menu item is deleted
+   -FIXED - in repairParentConnectionInCode,
+                if (refNode == null) {
+                if (initGUIMethod == null)
+                    addInitGUIMethod();
+// this assignment of refNode can lead to new component being placed inside menu item block
+//                refNode = getElemAssign(initGUIMethod, true);
+   
+2) When custom event listener is used by jigloo, it doesn't implement all methods, or use adapter
+
+========================================
+
+create artificial icon and title for frames on Linux - DONE
+
+Make sure L&F not set unnecessarily - DONE
+
+Make sure Outline shows correct view (Java or GUI) on editor startup - DONE
+
+When adding rows/columns to gridbag layout, set gridx/gridy to values other than -1 etc
+
+BUG - set GridBagLayout, then start adding rows/columns - sometimes keep adding but code doesn't change
+BUG - when in tabbed-pane layout, error caused by setHighlight???
+BUG - delete key doesn't work in outline when editor maxed - DONE
+BUG  - select 2 comps in GB layout, and set anchor - both end up with same gridx & gridy
+BUG - disable parsing, manually edit code, then add a button, say - no code or form change!!!s
+
+When Absolute, Anchor, SWT Form or Enfin layout selected, automatically show grid
+    - add preference for this behaviour. - DONE
+Add grid-size preference, so that grid button just toggles grid on/off. - DONE
+flash "View Log" button if errors thrown during parsing - esp paint errors - DONE
+make align-menu more user-friendly (turn into a dialog with buttons) - DONE
+custom property editor support improved - DONE
+x/y location in status bar - DONE
+grid-adjust bars only appear when container selected, not when mouse enters container - DONE
+added align "menu" button to element frame - DONE
+button bar for alignments, etc and preferences popup - DONE
+property categories - DONE
+frame decorations shown in GUI editor - DONE
+holding SHIFT down to place multiple components - DONE
+option to time-out on set property method calls - DONE
+preferences arranged as tree nodes, not tabbed panels - DONE
+component palette - DONE
+fixed breakpoint double-click for 3.0 and 3.1 - DONE
+
+==========================================================
+
+For 3.5.0
+
+TODO: fix bug when extracting to new form
+
+TODO: fix SWT_AWT shell always on top (when inside a Swing JTabbedPanel - ie, when a different
+tab panel is brought to front, *hide* SWT control!)
+
+TODO: Implement insert/delete/edit actions for GridEdgeMarker
+
+TODO: Fix grid edge markers for cases where there is a menu and top container has 
+a GridBag or Form layout
+
+TODO: cope with this.jLabel, or super.jLabel
+
+=================================================
+
+TODO: only parse methods like createButtonsForButtonBars for WizardDialog etc classes,
+instead of all methods
+
+TODO: if instance method is called from code, pass in parameters, but if not (eg,
+createButtonsForButtonBars) then read parameter names and assign somehow
+to FormComponents (eg, createButtonsForButtonBars(parent->buttonBar))
+
+TODO: add tabIcon property for children of JTabbedPanes
+
+DONE: if SHIFT is held down while dragging mouse, multi-select components (marquee)
+
+DONE: Added "even space vertical/horizontal" and "make even widths/heights" options in
+"Align" menu
+
+DONE: multiple-classes defined in same file are handled correctly now - only the
+class whose name is the same as the class file is now parsed and modified.
+
+DONE: don't use parseExternalSetters since we only parse called methods now!
+
+DONE: don't include import for custom classes in same package
+
+DONE: If items moved while multi-selected, manage layout constraints better
+(eg, apply Dgridx, Dgridy to all elements, instead of gridx, gridx)
+
+TODO: manage GridBag constraints when copying and pasting items
+
+DONE: figure out how renaming of main class could be messing things up - listen for
+external changes to class file, and re-load/re-parse file.
+
+DONE: Use code for Border creation which only uses set parameters (esp for TitledBorder)
+
+DONE: BugFix: if main class was refactored/renamed then changes would not be recognized
+by Jigloo, leading to a number of possible problems. Now, Jigloo listens for resource-change
+events and re-loads FormEditor if a GUI class being edited is changed externally (eg, due to
+a refactoring of the main class name).
+
+TODO: Cope with custom layouts with constraints - custom constructor for constraint 
+may need to be defined in jigloo_constructors file.
+
+DONE: custom constructors can now be defined in a file called jigloo_constructors, as well
+as in the ".constructrs" file, which is more convenient since the ".constructors" file is hidden 
+in package explorer.
+
+DONE: BugFix: When creating a new class from Navigator (instead of PackageExplorer) class
+would be created in wrong package.
+
+DONE: parsed all "init-gui" methods, not just constructors and main (allows
+an init-gui method to be defined but need not be called from a constructor).
+
+DONE: swing mnemonics and accelerators handled
+
+DONE: property values can be typed into a combo-box now (eg, "alt B" can be typed in to
+an "accelerator" combo-box).
+
+DONE: handled jars added to project build path *not* as "external jars" but as project elements
+
+DONE: fixed JSplitPane appearance when dividerLocation is set
+
+DONE: fixed ownership problem when parsing setComponentForPopup in code (ie, JPopupMenu
+would not be linked to correct parent Component), and also fixed JPopupMenu sub-items' lack
+of properties
+
+=====================OLD NEWS===================
+TODO: use Eclipse CodeFormatter, not home-made one
+
+TODO: make font dialog for Macs.
+
+BUG: why doesn't L&F get set properly when opening new editor?
+
+BUG: Change class of an element in a superclass - the class is not updated
+in an extended class.
+
+TODO: make sure 2.7.2 code (SWT and Swing) can be manipulated by 2.9.0
+(ie, size of frame is updated correctly).
+
+TODO: make sure size of frame is updated correctly (set or not set) for Shells
+
+TODO: see what other property types can use the ClassWrapper/PropertyDescriptor
+classes (TreeModel, ListModel etc)
+
+TODO: extra preferences - include parsing of property setters in methods outside
+of element's constructor call (while excluding event handlers)
+
+BUG: dialogShell.open and layout should be last lines in open method
+
+BUG: shells keep getting added to Display in Outline every time code reparsed
+
+BUG: removing layout from JPanel constructor in code does not reset layout
+to default. What happens in general if setLayout call is removed?
+
+Add beter comments to palette tooltips (pop-up help?)
+
+TabItem bounds in linux
+
+Change FormComponent.add(FormComponent) to create control/component if needed
+(as done in pasteComponent and FormComponent(FormComponent) constructor)
+
+Set layout to grid, say, then absolute, then grid - absolute layout causes code problems.
+
+Add Group with GridLayout with button to NewComposite, then copy and paste 
+Group - button's properties do not appear, and layout not created.
+
+OPTIONS:
+	Parse code when errors present?
+	Delay before parsing
+	FormLayout anchor defaults
+	Add props to code alphabetically or in order set
+	FormEditor.WIGGLE_ROOM when moving components
+	Add objects using getters, or in initGUI
+	
+Try changing style of Group in SWTDesTest, deleting then undoing,
+setting layout for two different groups (both have groupLayout)
+
+BUG: SWT menu does not appear in preview.
+
+BUG: Menus in menu bar are 60x30, instead of fitting into menubar
+
+Change layout of Group inside SWTDesTest - layoutData is shared
+between buttons, and size is set when it shouldn't be.
+
+TODO: LayoutDataWrappers should only be updated when setting layout,
+moving controls or changing layoutData fields.
+
+BUG: move button from one Group to another in SWTDesTest, or
+cut button, then paste it - looks like a problem with RowData
+being preserved when control placed in GridLayout, eg.
+Also, button declaration is not on new line after class body
+open brace, and name is not nameInCode.
+
+BUG: SliderGame - move button4 up a place or two, then change
+to a FlowLayout - button4 keeps it's large size (preferredSize
+must be being set somewhere when button moved.
+
+BUG: SliderGame - convert to GridBagLayout - buttons do not get
+correct constraints till they are moved.
+
+TODO: create event handler code. Don't add extra methods to main class,
+just create stub in anonymous class (with a sysout line). Treat handler methods
+individually, and don't overwrite manual code!!!! When "don't handle"
+is picked, remove handler!
+
+BUG: when event handled method removed from event handler class,
+entry in event property panel doesn't disappear. Also, default name
+can have block name in event property panel
+
+BUG: setSize for JPanel root, instead of setPreferredSize, when dragging
+root boundary
+
+BUG: Change JFrame (with menu) size by dragging, then change in code
+- menu height is messing things up.
+
+TODO: add layout() method call for main composite class (could
+this just be in template?- what if it gets deleted?)
+
+TODO: add initGUI method call in constructor (when modifying old code)
+
+TODO: make sure everthing works when java editor is separate from
+form editor.
+
+BUG: setLayout for JFrame should be getContentPane().setLayout
+
+BUG: When moving a component to or from a JTabbedPane, need to
+add or remove tabTitle property
+
+BUG: when moving a component up a level (from it's parent to the parent of its
+parent) isInSubBlock doesn't recognize component being moved as child
+of original parent (which it used to be, but isnt now). Also, need to handle
+multiple-moves.
+
+TODO: give option to re-format code into blocks or getter methods?
+
+TODO: improve viewer support - is TextViewer useful?
+
+TODO: how to cope with setting root comp size in old showGUI method?
+
+TODO: Handle multiple connection nodes - in Swing, add and setViewport
+are both conections for a JScrollpane. Also, set tabTitle as a property node.
+
+TODO: check all templates for NewWizard
+
+TODO: when changing alignment for a Button, repair constructor
+(in general, might need to define certain properties which can be
+set in the constructor and so affect the defaults)
+
+BUG: set Absolute layout - the "setLayout(thisLayout)" doesn't get
+changed to setLayout(null) - plus the final ";" disappears. Then,
+when the layout is set to something else, the layout constructor can
+be placed after the setLayout call.
+
+BUG: edit NewDialog - re-parsing causes popup. Then try setting the
+image on a menuItem2 to defualt, and then edit java - form gets 
+messed up.
+
+BUG: changing style of control inside group messes up group's layout
+(on screen, at least).
+
+TODO: figure out how to get shell to be correct size when run (for
+both cases when size of root control is set and not set).
+
+BUG: if initGUI method is added, indentation all wrong, and also a call to
+it is not inserted in code.
+
+TODO: handle "no suitable constructor" message box for cases like 
+new Display() and new Rectangle(size.x, size.y) - eg, don't pop up
+error box?
+
+TODO: handle computeTrim. Use default instances? Does Shell have
+a default instance?
+
+TODO: Add Examples to NewFormWizard
+
+TODO: Allow Outline and PropertyEditor to be included inside main 
+form editor
+
+TODO: in FormComponent.moveTo, editor.refresh line takes up significant
+time (and is called too often) and investigate need for other 3 calls in block.
+
+CHANGES:
+
+o Parse stop-start button added to Outline (allows significant changes to be made
+to code without overhead of continual parsing).
+
+o Alt+click in java editor causes Form Outline to be shown instead of Java outline
+
+o Models for JComboBox, JList, JSpinner, JTable generated and parsed (and
+model property can be set to any suitable model defined in code). Changes
+to models made in code are reflected in form.
+
+o String array properties recognized (means items are parsed for SWT List, Combo)
+
+o when form editor maximized, form outline and GUI properties views appear
+inside editor (so editor can be used fully when maximized)
+
+o JFace viewers added
+
+o Various code-generation options - getter methods (like JBuilder, VEP etc)
+or code in main block (separated either with braces, tagged comments or newlines)
+
+o Examples can be generated from the "new" wizard.
+
+o Form file can still be saved using setting in the Jigloo preferences page.
+
+o easy navigation between code and gui elements - selecting gui element
+in form editor takes you to element assignment in code; moving cursor in 
+code selects and reveals gui element; clicking on property in property editor 
+takes you to property setter in code.
+

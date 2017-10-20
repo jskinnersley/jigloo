@@ -1,0 +1,17 @@
+<contexts>
+<context id="help_contents">
+ <description>Jigloo GUI Builder Guide</description>
+	<topic label="Introduction" href="html/intro.html" />
+	<topic label="Getting started">
+		<link toc="toc_starting.xml"/> 
+	</topic>
+	<topic label="Building the GUI and Java code">
+		<link toc="toc_building.xml"/> 
+	</topic>
+	<topic label="Inheritance and Other topics">
+		<link toc="toc_other.xml"/> 
+	</topic>
+	<topic label="Tips and FAQs" href="html/tips.html" />
+	<topic label="What's new" href="html/changes.html" />
+</context>
+</contexts>

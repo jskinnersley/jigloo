@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+
+<toc label="Inheritance and Other topics">
+	<topic label="Visual Inheritance"
+	  href="html/inheritance.html"/> 
+	<topic label="Creating a subclass of a custom class"
+	  href="html/inheritance.html#creating"/> 
+	<topic label="Editing properties of custom classes"
+	  href="html/inheritance.html#custom"/> 
+	<topic label="An Example of Visual Inheritance"
+	  href="html/inheritance.html#example"/> 
+	<topic label="Extending abstract and non-public classes"
+	  href="html/inheritance.html#abstract"/> 
+	<topic label="Changing an element's class"
+	  href="html/other.html#changing_class"/> 
+	<topic label="More on custom classes (and JavaBeans)"
+	  href="html/other.html#custom_class"/> 
+	<topic label="Extracting part of a GUI as a new class"
+	  href="html/other.html#extracting"/> 
+	<topic label="Previewing the GUI"
+	  href="html/other.html#previewing"/> 
+	<topic label="Running the Java Code"
+	  href="html/other.html#running"/> 
+	<topic label="Toggling between SWT and Swing"
+	  href="html/other.html#toggling"/> 
+	<topic label="Viewing Swing/SWT Javadoc"
+	  href="html/other.html#javadoc"/> 
+	<topic label="Examples"
+	  href="html/other.html#examples"/> 
+</toc>

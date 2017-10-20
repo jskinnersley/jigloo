@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Jigloo GUI Builder Guide</title>
+  
+  <link rel="STYLESHEET" href="book.css" type="text/css">
+  <meta name="author" content="Cloudgarden.com"></head><body bgcolor="white">
+<h3><a name="add_comp"></a><span style="font-family: arial;">Adding
+Components
+</span></h3>
+<br>
+<span style="font-family: arial;">Whether you are building in SWT or
+Swing, most of the operations are
+similar. You can add components either by using the component palette,
+or by the context-menu options.<br>
+<br>
+</span><span style="font-family: arial;"><img src="images/palette1.PNG" title="" alt="" align="right" height="150" width="364"></span><span style="font-family: arial;">1) <b>Component Palette</b>: Choose one
+of the tabs, then click on the button representing the
+component/control you wish to add. When you move the mouse over your
+form, or over the Outline view, the cursor will change to a cross-hair
+when you are allowed to drop your new component or control. If you are
+not allowed to drop your component (eg, you are not allowed to add
+anything to a Button) the cursor will change to the "not allowed"
+cursor. To cancel the add operation, find somewhere where the cursor is
+"not allowed" and click the mouse. <br>
+<br>
+Remember that sometimes it will be easier to add components to the
+Outline view (in cases where the current components take up all
+available space in a container, or when adding menu items)<br>
+<br>
+</span><span style="font-family: arial;">You can determine whether the
+component palette is
+shown, by going to the "Windows-&gt;Preferences-&gt;Jigloo" preferences
+page.</span><br>
+<span style="font-family: arial;"><br>
+<br>
+</span><img alt="" src="images/add_cont.png" align="right" height="114" width="293"><span style="font-family: arial;">2) <b>Context-menu</b>: right-click on
+the component in either the
+editor or in the Outline view, and choose from the menu options:</span><br style="font-family: arial;">
+<span style="font-family: arial;"><br>
+You can determine whether that part
+of the context menu is shown by going to the
+"Windows-&gt;Preferences-&gt;Jigloo" preferences
+page.</span><br style="font-family: arial;">
+<br style="font-family: arial;">
+<span style="font-family: arial;"></span><br>
+<br>
+<span style="font-family: arial;"><img src="images/new_comp_dialog.png" alt="" align="right" height="382" width="432"></span><span style="font-family: arial;">In either
+case, you will be asked to name the
+component (a default name will be provided for you). </span><span style="font-family: arial;"></span><span style="font-family: arial;">Also, if the
+component has text or image properties, if it is being added to a
+container which uses layout constraints, or is a container itself, you
+will be able to specify all these things using the dialog which will
+appear:<br>
+<br>
+<br>
+<br>
+You can turn off
+the use of this dialog using the "Window-&gt;Preferences-&gt;Jigloo GUI
+Builder" preferences panel, in which case the component will be
+immediately added with the default name.<br>
+<br>
+After adding the component, you may want to resize it - simply click
+and drag an edge or corner of the blue border around the component.<br>
+<br>
+</span>
+<h3><br>
+</h3><br>
+<br>
+<br>
+<h3><a name="add_custom"></a><span style="font-family: arial;"></span><font face="Tahoma">Adding
+Custom Components and Layout managers</font><br>
+</h3>
+<><span style="font-family: arial;">
+</span></>
+
+<br>
+
+<span style="font-family: arial;">To add a custom component (a visual
+Swing class which extends JComponent or an SWT class which extends
+Widget) click on the "Custom" tab in the component palette.</span><span style="font-family: arial;"><img src="images/custom.PNG" alt="" align="right" height="282" width="529"></span><span style="font-family: arial;"> If you have
+not previously added any custom classes, there will be a single "bean"
+icon in the palette with a tooltip of "Add Custom
+Component/Control...". Select this icon, then click on the form. A
+Dialog will appear into which you can start typing the name of the
+custom class. A list of possible matches will appear below where you
+are typing and you can select your class. Note that your custom class
+must be contained in your project, or in a project referenced by your
+project. </span><span style="font-family: arial;"></span><br>
+<span style="font-family: arial;">
+<br>
+After adding your class, an icon will be added to the "Custom" palette.
+The tooltip for the icon will let you know which class that icon
+represents. <br>
+<br>
+By default, </span><span style="font-family: arial;">a "coffee bean"
+image will represent your custom class. But if</span><span style="font-family: arial;">
+you have created a BeanInfo class for your custom class,
+and defined an icon for it, then that icon will be used both in the
+"Custom" palette and in the Outline view. However, an icon defined in
+BeanInfo may not show up in Eclipse 3 unless you over-ride the
+loadImage method like this:<br>
+<br>
+</span>
+<table border="1" cellpadding="5" cellspacing="2" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top" width="60%"><small><small><font face="Courier New, Courier, monospace"><big>public Image loadImage(String imgUrl) {<br>&nbsp;&nbsp;&nbsp; try {<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; super.loadImage(imgUrl);<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; URL url = getClass().getClassLoader().getResource(imgUrl);<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if(url != null)<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; return new ImageIcon(url).getImage();<br>&nbsp;&nbsp;&nbsp; } catch (Exception e) {<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace();<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; return null;<br>}</big></font></small></small></td>
+      <td valign="top"><small><span style="font-family: arial;">** You need to override the loadImage method because </span><small><font face="Courier New, Courier, monospace"><font face="Tahoma"><big>Eclipse 3+ sets a ContentHandlerFactory for URLConnections which doesn't seem
+capable of handling gif images, and so the url.getContent() method in
+the SimpleBeanInfo loadImage method does *not* return an ImageProducer,
+and hence the method does not return an image. The above method,
+however, does work in Eclipse 3.0+ because it does not depend on the
+url.getContent().</big></font></font></small></small></td>
+    </tr>
+  </tbody>
+</table>
+<span style="font-family: arial;"></span><small><font face="Courier New, Courier, monospace"><font face="Tahoma"><big></big></font></font></small><small><font face="Courier New, Courier, monospace"><font face="Tahoma"><big></big></font></font></small><span style="font-family: arial;"><br>
+You can add custom layout managers in exactly the same way as custom
+components. They will not appear in the "Custom" palette, however, but
+in the "Layouts" palette.<br>
+<br>You can organize the custom components and layouts shown in the
+Swing or SWT "Custom" and "Layouts" palettes by using the Jigloo <a href="preferences_page.html">Preferences Page</a>.<br>
+<br>
+</span><span style="font-family: arial;">
+<br style="font-family: arial;">
+</span>
+<h3 style="font-family: arial;"><a name="selecting"></a>Selecting
+components<br>
+</h3>
+<span style="font-family: arial;"><br>
+To select a component, click on it in
+the GUI editor, or in the Outline view.<br>
+<br>
+</span><font face="Helvetica, Arial, sans-serif"><b>Multi-selecting elements (CTRL key and selection marquee).</b></font><font face="Helvetica, Arial, sans-serif"><b><img alt="" src="images/multi-sel2.PNG" align="right" height="124" width="202"></b></font><font face="Helvetica, Arial, sans-serif"><b><img alt="" src="images/multi-sel1.PNG" align="right" height="124" width="210"></b></font><font face="Helvetica, Arial, sans-serif"><b><br>
+</b></font>
+<font face="Helvetica, Arial, sans-serif"><br>
+You can hold CTRL
+down when selecting elements in the form editor and this will
+multi-select the elements. <br>
+<br>
+In addition, you can hold SHIFT down while
+dragging the mouse and a red rectangle (a selection marquee) will appear which you can drag
+around all the elements you wish to select (see figures). </font><font face="Helvetica, Arial, sans-serif"><i>Note that to select an element you only need to intersect it with the marquee</i>. </font><span style="font-family: arial;">When multiple
+components are selected, the properties they have in common will be
+shown in the "GUI Properties" view.</span><font face="Helvetica, Arial, sans-serif"> Then any
+properties you change, or any resizing or moving or copy/cut/pasting
+you do will apply to all selected elements.<br>
+<br>
+</font><span style="font-family: arial;">
+<span style="font-weight: bold;">Special Case: </span></span><span style="font-family: arial; font-weight: bold;">Menu
+components</span><br style="font-family: arial;">
+<span style="font-family: arial;">The only cases where components
+cannot be selected in the GUI editor are with any menu component (JMenu, Menu, JMenuItem, MenuItem etc)
+which is not a direct child of a menu bar. These can only be selected
+using the Outline view.</span><br>
+<br>
+<br style="font-family: arial;">
+<h3 style="font-family: arial;"><a name="setting_props"></a>Setting/Resetting
+Properties</h3>
+<span style="font-family: arial;"><br>
+All the editible properties are
+displayed in the "GUI Properties" view. Here you can set properties
+with text, color, font, image, number, boolean, point, rectangle, field
+and Swing Border values.&nbsp; Properties with more complex property
+types will need to be set with your own user code, without the help of
+Jigloo. Once
+a property is set, the property name will appear with an asterisk after
+it. <br>
+<br>
+If multiple components are selected, setting a property in the </span><span style="font-family: arial;">"GUI Properties" view will set it for all
+selected components</span><span style="font-family: arial;">. </span><br>
+<br style="font-family: arial;">
+<span style="font-family: arial;">To reset the property to it's initial
+value (and to cause the generated code to *not* set that property)
+right-click on the property name and choose "Restore Default Value".
+Alternatively, you can just delete the line that sets that property in
+the code.<br>
+<br>
+If the component has a text property (such as a button's name or a
+tabbed panel's label) then double-clicking on that component will open
+a small text box in the middle of that component which will allow you
+to edit the text:<br>
+<img src="images/text_edit.png" alt="" height="103" width="328"><br>
+</span><span style="font-family: arial;"><br style="font-family: arial;">
+</span>
+<h3 style="font-family: arial;"><a name="ordering"></a>Changing the
+ordering of components</h3>
+
+<span style="font-family: arial;"><br>
+To move a component up or down inside
+a container, you can either drag it around in the Form editor or in the Outline view. You can
+simply drag-and-drop single or multiple components around inside a
+container or transfer them to a different container. By holding the
+CTRL key down (on Windows &amp; Linux) or ALT (on a Mac) you can also
+copy the selected component(s). Alternatively, you can use the "Move
+Up"
+and "Move down" right-click options for that component. <br>
+<br>To change the order of tabbed panels inside a tabbed folder you need to use the Outline view.</span><br>
+
+<br style="font-family: arial;">
+
+<h3 style="font-family: arial;"><a name="transferring"></a>Transferring
+(and copying) components to different containers<br>
+</h3>
+
+<span style="font-family: arial;"><br>
+You can transfer components using either the Form editor, or the
+Outline view. To transfer a component from one container to a
+different one, select the component(s) and drag them over the desired
+container. The container will be highlighted with a green border (if
+using the editor to do the transfer). On
+releasing the mouse the component(s) will be removed from their
+original container and placed in the new container. </span><span style="font-family: arial;">By holding the CTRL key down (on Windows
+&amp; Linux) or ALT (on a Mac) you can also copy the selected
+component(s).</span><br>
+<span style="font-family: arial;"><br>
+</span>
+<h3 style="font-family: arial;"><a name="renaming"></a>Renaming
+Components</h3>
+
+
+<span style="font-family: arial;"><br>
+To rename a component, you can refactor it in the java code, or use the
+"Rename" right-click option in the Form editor or Outline view. This will
+save the current configuration (and the corresponding Java code) so
+that it can rename the component and any references to it which might
+occur in the Java code.</span><br>
+
+<span style="font-family: arial;"><br style="font-family: arial;">
+</span><br style="font-family: arial;">
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252"><title>Jigloo GUI Builder Guide</title>
+	
+	<meta name="GENERATOR" content="OpenOffice.org 2.0  (Win32)">
+	<meta name="AUTHOR" content="Cloudgarden.com">
+	<meta name="CREATED" content="20051126;10023565">
+	<meta name="CHANGED" content="16010101;0">
+	<style>
+	<!--
+		TD P { margin-top: 0.1in; margin-bottom: 0.1in; color: #000000; font-family: "Arial", "Helvetica", sans-serif; font-size: 10pt }
+		P { margin-top: 0.1in; margin-bottom: 0.1in; color: #000000; font-family: "Arial", "Helvetica", sans-serif; font-size: 10pt }
+		H3 { font-size: 11pt }
+		A:link { color: #0000ff }
+	-->
+	</style></head>
+<body bgcolor="#ffffff" dir="ltr" lang="en-US" link="#0000ff">
+<h3><a name="start"></a><font face="Helvetica, Arial, sans-serif">Quick
+Start</font></h3>
+<p><br>&nbsp; <font face="Helvetica, Arial, sans-serif">Here is a
+suggested plan to help you get started quickly with using Jigloo:</font></p>
+<ol>
+	<li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">Read
+	the “What's new” pages for versions&nbsp; </font><font face="Helvetica, Arial, sans-serif"><a href="changes390.html">3.9.0</a></font><font face="Helvetica, Arial, sans-serif">, </font><font face="Helvetica, Arial, sans-serif"><a href="changes382.html">3.8.2</a></font><font face="Helvetica, Arial, sans-serif">,&nbsp; </font><a href="changes38.html"><font face="Helvetica, Arial, sans-serif"><a href="changes381.html">3.8.1</a></font></a><font face="Helvetica, Arial, sans-serif">, </font><font face="Helvetica, Arial, sans-serif"><a href="changes38.html"> 3.8</a> and</font><font face="Helvetica, Arial, sans-serif"> <a href="changes35.html">3.5</a>.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">Create
+	one (or all) of the <a href="other.html#examples">examples that are
+	part of the Jigloo distribution</a> - they demonstrate SWT and Swing
+	applications, visual inheritance, use of custom classes, use of
+	JavaBeans, etc.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">If
+	you are planning to modify existing GUI classes (created either by
+	hand or by a different GUI builder, eg JBuilder, Netbeans, etc) then
+	read <a href="#old_class">"Opening an existing GUI class"</a>.
+	</font>
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">If
+	you are working on <b>SWT classes</b> created using <b>Jigloo 2.7.2</b>,
+	or created without Jigloo, read <a href="#migrating">this section</a>.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">If
+	you are working on classes which have had <b>Strings externalized</b>
+	using <b>Jigloo 2.7.2</b>, read <a href="code.html#ext_strings">this
+	section</a>.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">Otherwise,
+	read <a href="#new_class">"Creating a new GUI class"</a>.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">Take
+	a quick look at <a href="code.html">how Jigloo parses your code</a>
+	- you don't need to understand it all right now, but you may need to
+	come back to it later if you have code which does not seem to be
+	being recognized by Jigloo, since understanding how Jigloo parses
+	your code (and how you can control which code is parsed, and which
+	classes are instantiated) will enable you to get the most out of
+	Jigloo.</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">If
+	you are making an SWT class, read <a href="#swt_prep">this section</a>
+	on including the SWT libraries.</font> 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">Familiarise
+	yourself with the <a href="#editor_parts">basic components of Jigloo</a>
+	and how to use them</font> 
+	</p>
+	<ul>
+		<li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">the
+		<a href="editor.html">Form/Source editor</a></font> 
+		</p>
+		</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">the
+		<a href="properties_editor.html">GUI Properties editor</a></font> 
+		</p>
+		</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">the
+		<a href="outline_page.html">Outline View</a></font> 
+		</p>
+		</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">the
+		<a href="preferences_page.html">Preferences Page</a></font> 
+		</p>
+	</li></ul>
+	</li><li><p><font face="Helvetica, Arial, sans-serif">Look at the <a href="tips.html">Useful
+	Tips</a> page.</font></p>
+</li></ol>
+<h3><a name="old_class"></a><font face="arial">Opening an existing
+GUI class</font></h3>
+<p><font face="arial"><br>To open an existing Java GUI class, simply
+right-click on it in the Package Explorer and choose the "Open
+with-&gt;Form Editor" option. If you subsequently close the
+editor and double-click on the class in the Package Explorer it will
+automatically be opened with the Jigloo Form Editor.<br><img src="images/open_existing.PNG" name="graphics1" align="bottom" border="0" height="390" width="515"></font></p>
+<h3><a name="migrating"></a><font face="arial">Working on SWT classes
+created with older Jigloo versions, or without Jigloo</font></h3>
+<p><font face="Helvetica, Arial, sans-serif">You will be able to open
+and modify SWT classes created with versions of Jigloo earlier than
+3.0, and also with other GUI builders or by hand, but here are a few
+notes on code differences between the versions:</font></p>
+<ol>
+	<li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">SWT
+	images/fonts/colors - in earlier versions of Jigloo, images, fonts
+	and colors were created as fields and disposed in the
+	DisposeListener handler which was added to the main class. In Jigloo
+	3.0, images, fonts and colors are handled by the
+	SWTResourceManager.&nbsp; Jigloo 3.0 offers a way to convert from
+	using these image/font/color fields to using the SWTResourceManager,
+	and in the process removing the fields. Simply right-click on the
+	Form Editor, and choose the "Source-&gt;Convert to using
+	SWTResourceManager" option.<img src="images/sourceOptions.PNG" name="graphics2" align="bottom" border="0" height="123" width="431"></font></p>
+	</li><li><p><font face="Helvetica, Arial, sans-serif">The showGUI method
+	for SWT Composites in older versions of Jigloo contains a setSize
+	method call to set the size of the parent Shell. This showGUI method
+	is incompatible with Jigloo 3.0, and the setSize method will not be
+	modified by Jigloo 3.0 when the size of the main Composite is
+	changed in the form editor. Jigloo 3.0 offers a way to quickly
+	insert a new showGUI method. To insert the new showGUI method,
+	right-click on the Form Editor, and choose the "Source-&gt;Insert
+	new showGUI method". This new showGUI will set the size of the
+	shell automatically from the size of the Composite. You will need to
+	manually remove the old showGUI method.</font></p>
+</li></ol>
+<h3><a name="new_class"></a><font face="arial">Creating a new GUI
+class</font></h3>
+<p><font face="arial"><br>To start building a GUI you can either
+start with a new one, or start editing an existing GUI class made by
+a different GUI builder (eg, JBuilder or Netbeans) or by hand.</font><br><br><font face="arial">To
+create a new GUI class inside a Java package, right-click on the
+package and choose "New-&gt;Other"...<br><br><img src="images/newForm1.PNG" name="graphics3" align="bottom" border="0" height="330" width="521"><br><br>...then
+select "GUI Forms" in the dialog which will pop up, and
+choose the kind of&nbsp; class you want to make (eg, SWT Composite,
+JFrame, etc). <br><br><img src="images/newForm2.PNG" name="graphics4" align="bottom" border="0" height="497" width="498"><br><br>This
+will create a new Java class file in your package, which will be
+opened automatically in the Jigloo GUI editor.</font></p>
+<h3><a name="editor_parts"></a><font face="arial">Jigloo's basic
+components</font></h3>
+<p><br><font face="arial">A screenshot of Jigloo (with one of many
+possible layout setups) editing the "FlowerShop" example is
+shown below.</font> <font face="arial">The editor has been maximized
+by double-clicking on the editor's tab. This is the recommended
+layout for GUI editing since there is no wasted space.</font><br><br><img src="images/jigloo_vert_split.PNG" name="graphics5" align="bottom" border="0" height="622" width="847"><br><br><font face="arial">The
+screenshot shows three of the four main components of Jigloo, which
+are described in their own sections:</font></p>
+<ul>
+	<li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">The
+	<a href="editor.html">Form/Source editor</a> (left half of the
+	screenshot)</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">The
+	<a href="properties_editor.html">GUI Properties editor</a> (bottom
+	right of the screenshot)</font></p>
+	</li><li><p style="margin-bottom: 0in;"><font face="Helvetica, Arial, sans-serif">The
+	<a href="outline_page.html">Outline View</a> (top right of the
+	screenshot)</font> 
+	</p>
+	</li><li><p><font face="Helvetica, Arial, sans-serif">The <a href="preferences_page.html">Preferences
+	page</a>, which is not in the screenshot.</font></p>
+</li></ul>
+<p><br><br>
+</p>
+<h3><a name="swt_prep"></a><font face="arial">Preparing your project
+to use the SWT classes</font></h3>
+<p><font face="arial"><br>If you are going to run SWT GUIs inside
+Eclipse then you need to make sure eclipse can find the required
+libraries. One way to do this is to add the required jar file(s) to
+your project's build path and to copy the native SWT library (or
+libraries) into your project. </font>
+</p>
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+	<tbody><tr valign="top">
+		<td colspan="2">
+			<p><font face="Arial"><b>On the Windows platform</b>, do this:</font></p>
+		</td>
+		<td>
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="40">
+			<p><br>
+			</p>
+		</td>
+		<td>
+			<ul>
+				<li><p style="margin-bottom: 0in;"><font face="arial">right-click
+				on your java project, choose "Properties", </font>
+				</p>
+				</li><li><p style="margin-bottom: 0in;"><font face="arial">click on the
+				"Java Build Path" tab, then the "Libraries"
+				tab, then the "Add External Jars" button, then</font></p>
+				</li><li><p style="margin-bottom: 0in;"><font face="arial">navigate to
+				the&nbsp; \eclipse\plugins\org.eclipse.swt.win32_n.n.n\ws\win32\
+				folder and choose the "swt.jar" file. (where n.n.n
+				stands for the swt version number etc)</font></p>
+				</li><li><p><font face="arial">then copy the file swt-win32-nnnn.dll
+				(which you will find in
+				\eclipse\plugins\org.eclipse.swt.win32_n.n.n\os\win32\x86\) into
+				your project's base directory. One way to&nbsp; do this is to
+				import the "org.eclipse.swt.win32" plugin, locate and
+				copy the dll file and then paste it into your project.</font></p>
+			</li></ul>
+			<p><font face="arial">Your project should now look something like
+			the image to the right:</font></p>
+		</td>
+		<td>
+			<img src="images/project.jpg" name="graphics6" align="right" border="0" height="148" width="233"></td>
+	</tr>
+</tbody></table>
+<table border="0" cellpadding="2" cellspacing="2" width="100%">
+	<tbody><tr valign="top">
+		<td colspan="2">
+			<p><font face="Arial"><b>For Linux (and for other platforms it
+			should be similar)</b>, do this:</font></p>
+		</td>
+		<td>
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="40">
+			<p><br>
+			</p>
+		</td>
+		<td>
+			<ul>
+				<li><p style="margin-bottom: 0in;"><font face="Arial">right-click
+				on your java project, choose "Properties", </font>
+				</p>
+				</li><li><p style="margin-bottom: 0in;"><font face="Arial">click on the
+				"Java Build Path" tab, then the "Libraries"
+				tab, then the "Add External Jars" button, then</font></p>
+				</li><li><p style="margin-bottom: 0in;"><font face="Arial">navigate to
+				the&nbsp; /eclipse/plugins/org.eclipse.swt.gtk_n.n.n/ws/gtk
+				folder and choose the "swt.jar" and "swt-pi.jar"
+				files.</font></p>
+				</li><li><p><font face="Arial">then copy the libswt-gnome-gtk-nnnn.so,
+				libswt-gtk-nnnn.so and libswt-pi-gtk-nnnn.so files (which you
+				will find in
+				/eclipse/plugins/org.eclipse.swt.gtk_n.n.n/os/linux/x86) into
+				your project's base directory. One way to&nbsp; do this is to
+				import the "org.eclipse.swt.gtk" plugin, locate and
+				copy the library files and then paste them into your project.</font></p>
+			</li></ul>
+			<p><font face="Arial">Your project should now look something like
+			the image to the right:</font></p>
+		</td>
+		<td>
+			<img src="images/project_linux.jpg" name="graphics7" align="right" border="0" height="200" width="433"></td>
+	</tr>
+</tbody></table>
+<p><font face="Arial"><br>When you run a class you might also need to
+set the <b>java.library.path</b> variable to point to the working
+directory for your project. ie, when you create a run configuration
+for your java class, choose the "(x)=Arguments" tab, and
+enter in the "VM arguments" panel a line like
+"-Djava.library.path=/home/jsk/eclipse/workspace/myProject".
+</font><br><font face="Helvetica, Arial, sans-serif">If you use the
+"Run" right-click option in the Form Editor, a run
+configuration is created for you, and the java.library.path variable
+is set for you - you just need to ensure that the native libraries
+are in your project's working directory, and that the required jar
+file(s) are on your build path.<br><br></font><br><br>
+</p>
+</body></html>
